@@ -1,6 +1,5 @@
 siteTitle="Mali"
 baseColor = "#3CBCBC"
-linkPrefix = "/gatsby-starter-documentation"
 docPages = [
   "/docs/",
   "/docs/application/",
