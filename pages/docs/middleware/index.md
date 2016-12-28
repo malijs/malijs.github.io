@@ -160,13 +160,13 @@ app.use(async function (ctx, next) {
 
 | Name | Description |
 |---|---|
-| [apikey](https://github.com/malijs/mali-apikey) | Api key authorization metadata middleware. |
-| [bearer](https://github.com/malijs/mali-bearer) | Bearer token authorization metadata middleware. |
-| [logger](https://github.com/malijs/mali-logger) | Development logging middleware. |
-| [metadata](https://github.com/malijs/mali-metadata) | Metadata middleware. |
-| [metadata auth](https://github.com/malijs/mali-metadata-auth) | Authorization metadata middleware. |
-| [param](https://github.com/malijs/mali-param) | Request param middleware. |
-| [request ID](https://github.com/malijs/mali-requestid) | Request ID metadata middleware. Sources request ID into context. |
-| [toJSON](https://github.com/malijs/mali-tojson) | Automatically calls `toJSON` on response if the method is present in response object. |
-| [toObject](https://github.com/malijs/mali-toobject) | Automatically calls `toObject` on response if the method is present in response object. |
-| [transform](https://github.com/malijs/mali-transform) | Transform response payload middleware. |
+| [apikey](https://github.com/malijs/apikey) | Api key authorization metadata middleware. |
+| [bearer](https://github.com/malijs/bearer) | Bearer token authorization metadata middleware. |
+| [logger](https://github.com/malijs/logger) | Development logging middleware. |
+| [metadata](https://github.com/malijs/metadata) | Metadata middleware. |
+| [metadata auth](https://github.com/malijs/metadata-auth) | Authorization metadata middleware. |
+| [param](https://github.com/malijs/param) | Request param middleware. |
+| [request ID](https://github.com/malijs/requestid) | Request ID metadata middleware. Sources request ID into context. |
+| [toJSON](https://github.com/malijs/tojson) | Automatically calls `toJSON` on response if the method is present in response object. |
+| [toObject](https://github.com/malijs/toobject) | Automatically calls `toObject` on response if the method is present in response object. |
+| [transform](https://github.com/malijs/transform) | Transform response payload middleware. |
