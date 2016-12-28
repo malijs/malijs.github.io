@@ -73,6 +73,6 @@ main()
 
 ## Next steps
 
-* Read the [documentation](https://malijs.github.com/docs)
-* Explore the [examples](https://malijs.github.com/examples)
+* Read the [documentation](https://malijs.github.io/docs)
+* Explore the [examples](https://malijs.github.io/examples)
 * Check out the [source code](https://github.com/malijs/mali)
