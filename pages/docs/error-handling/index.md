@@ -47,28 +47,3 @@ Since this would be pretty common, there are a couple of utility modules:
 
 * [create-grpc-error](https://github.com/bojand/create-grpc-error) - Function for creating Errors for gRPC responses
 * [grpc-error](https://github.com/bojand/grpc-error) - `GRPCError` class that wraps `create-grpc-error`
-
-### Stream errors
-
-Internally the gRPC server has an `'error'` event handler for all calls. This means
-that for stream and duplex calls if there are any uncaught errors in the stream
-processing the request will end with the error being passed back to the client.
-Normally this is fine. Sometimes we wish full request, even though the "processing"
-for some items may have failed. With proper error detection, and stream
-[utilities](http://highlandjs.org) this can be accomplished and we can consume
-/ collect / ignore errors and process all the items in the request. Although
-**not recommended** the default _bail on error_ behaviour can be removed by
-removing all the `'error'` listeners from the call via a middleware function:
-
-```js
-// NOT RECOMMENDED, DRAGONS BE HERE!
-// probably at the top of middleware chain
-app.use(async removeErrorListeners (ctx, next) {
-  // we may want to filter based on call type here
-  ctx.call.removeAllListeners('error')
-  await next()
-})
-```
-
-This will let you ignore / consume / collect stream errors however you wish without
-gRPC server ending the request for you.
