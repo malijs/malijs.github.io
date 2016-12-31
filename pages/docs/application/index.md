@@ -112,26 +112,3 @@ as opposed to a per request basis.
 ```js
 app.context.db = db()
 ```
-
-### Error Handling
-
-By default Mali outputs all errors to stderr `app.silent` is set to `true`.
-To perform custom error-handling logic such as centralized logging you can add an "error" event listener:
-
-```js
-app.on('error', err => {
-  log.error('server error', err);
-})
-```
-
-If the error occurs and we have a context that's also passed along to the error handler.
-
-```js
-app.on('error', (err, ctx) => {
-  log.error('server error for call %s of type %s', ctx.name, ctx.type, err);
-})
-```
-
-When an error occurs we try to send it to the caller either via the response in case
-of `UNARY` or `REQUEST_STREAM` calls or if appropriate via `Stream.emit()` in case
-of `RESPONSE_STREAM` and `DUPLEX` calls.

@@ -6,5 +6,7 @@ docPages = [
   "/docs/context/",
   "/docs/handling-requests/",
   "/docs/middleware/",
-  "/docs/api-reference/"
+  "/docs/error-handling/",
+  "/docs/api-reference/",
+  "/docs/links/"
 ]
