@@ -109,24 +109,4 @@ err.metadata.add(<span class="hljs-string">'statuc'</span>, <span class="hljs-st
 <li><a href="https://github.com/bojand/create-grpc-error">create-grpc-error</a> - Function for creating Errors for gRPC responses</li>
 <li><a href="https://github.com/bojand/grpc-error">grpc-error</a> - <code>GRPCError</code> class that wraps <code>create-grpc-error</code></li>
 </ul>
-<h3>Stream errors</h3>
-<p>Internally the gRPC server has an <code>'error'</code> event handler for all calls. This means
-that for stream and duplex calls if there are any uncaught errors in the stream
-processing the request will end with the error being passed back to the client.
-Normally this is fine. Sometimes we wish full request, even though the &quot;processing&quot;
-for some items may have failed. With proper error detection, and stream
-<a href="http://highlandjs.org">utilities</a> this can be accomplished and we can consume
-/ collect / ignore errors and process all the items in the request. Although
-<strong>not recommended</strong> the default <em>bail on error</em> behaviour can be removed by
-removing all the <code>'error'</code> listeners from the call via a middleware function:</p>
-<pre><code class="language-js"><span class="hljs-comment">// NOT RECOMMENDED, DRAGONS BE HERE!</span>
-<span class="hljs-comment">// probably at the top of middleware chain</span>
-app.use(<span class="hljs-keyword">async</span> removeErrorListeners (ctx, next) {
-  <span class="hljs-comment">// we may want to filter based on call type here</span>
-  ctx.call.removeAllListeners(<span class="hljs-string">'error'</span>)
-  <span class="hljs-keyword">await</span> next()
-})
-</code></pre>
-<p>This will let you ignore / consume / collect stream errors however you wish without
-gRPC server ending the request for you.</p>
 </div></div></div></div><span style="display:block;clear:both;" data-reactid="60"> </span></div></div></div><script src="/bundle.js?t=1483149649569"></script></body></html>
