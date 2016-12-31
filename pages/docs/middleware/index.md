@@ -165,6 +165,8 @@ app.use(async function (ctx, next) {
 | [logger](https://github.com/malijs/logger) | Development logging middleware. |
 | [metadata](https://github.com/malijs/metadata) | Metadata middleware. |
 | [metadata auth](https://github.com/malijs/metadata-auth) | Authorization metadata middleware. |
+| [metadata field auth](https://github.com/malijs/metadata-field-auth) | Mali base middleware utility for metadata auth field checks. |
+| [onerror](https://github.com/malijs/onerror) | On error middleware. |
 | [param](https://github.com/malijs/param) | Request param middleware. |
 | [request ID](https://github.com/malijs/requestid) | Request ID metadata middleware. Sources request ID into context. |
 | [toJSON](https://github.com/malijs/tojson) | Automatically calls `toJSON` on response if the method is present in response object. |
