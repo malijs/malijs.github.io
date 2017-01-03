@@ -88,7 +88,7 @@ app.use('writeHellos', async function (ctx) {
   let failed = 0
 
   return new Promise((resolve, reject) => {
-    highland(stream)
+    highland(ctx.req)
       .tap(message => {
         try {
           stream.write(JSON.stringify(message))
