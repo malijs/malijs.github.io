@@ -83,11 +83,12 @@ successfully written and failed. Using highland we could do something like:
 
 ```js
 app.use('writeHellos', async function (ctx) {
-  ctx.res = new Promise((resolve, reject) => {
-    const stream = fs.createWriteStream('messages.txt')
-    let succeeded = 0
-    let failed = 0
-    ctx.res = highland(stream)
+  const stream = fs.createWriteStream('messages.txt')
+  let succeeded = 0
+  let failed = 0
+
+  return new Promise((resolve, reject) => {
+    highland(stream)
       .tap(message => {
         try {
           stream.write(JSON.stringify(message))
