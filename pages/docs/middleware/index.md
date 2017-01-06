@@ -51,7 +51,7 @@ Here our contrived `logger` middleware accepts a `format` string for customizati
 and returns the middleware itself:
 
 ```js
-function logger(format) {
+function logger (format) {
   format = format || ':name [:type]'
 
   return async function (ctx, next) {
@@ -74,8 +74,8 @@ app.use(logger(':name | :type'))
 Naming middleware is optional, however it's useful for debugging purposes to assign a name.
 
 ```js
-function logger(format) {
-  return async function logger(ctx, next) {
+function loggerMiddleware (format) {
+  return async function logger (ctx, next) {
 
   }
 }
@@ -153,6 +153,7 @@ app.use(async function (ctx, next) {
   const paths = await fs.readdir('docs')
   const files = await Promise.all(paths.map(path => fs.readFile(`docs/${path}`, 'utf8')))
   ctx.res = { content: files.join('') }
+  await next()
 })
 ```
 
