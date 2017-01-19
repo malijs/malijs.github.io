@@ -163,6 +163,7 @@ app.use(async function (ctx, next) {
 |---|---|
 | [apikey](https://github.com/malijs/apikey) | Api key authorization metadata middleware. |
 | [bearer](https://github.com/malijs/bearer) | Bearer token authorization metadata middleware. |
+| [iff](https://github.com/malijs/iff) | Conditionally add Mali middleware. |
 | [logger](https://github.com/malijs/logger) | Development logging middleware. |
 | [metadata](https://github.com/malijs/metadata) | Metadata middleware. |
 | [metadata auth](https://github.com/malijs/metadata-auth) | Authorization metadata middleware. |
@@ -173,3 +174,4 @@ app.use(async function (ctx, next) {
 | [toJSON](https://github.com/malijs/tojson) | Automatically calls `toJSON` on response if the method is present in response object. |
 | [toObject](https://github.com/malijs/toobject) | Automatically calls `toObject` on response if the method is present in response object. |
 | [transform](https://github.com/malijs/transform) | Transform response payload middleware. |
+| [unless](https://github.com/malijs/unless) | Conditionally add Mali middleware. |
