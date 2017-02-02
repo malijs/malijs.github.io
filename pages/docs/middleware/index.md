@@ -164,6 +164,7 @@ app.use(async function (ctx, next) {
 | [apikey](https://github.com/malijs/apikey) | Api key authorization metadata middleware. |
 | [bearer](https://github.com/malijs/bearer) | Bearer token authorization metadata middleware. |
 | [iff](https://github.com/malijs/iff) | Conditionally add Mali middleware. |
+| [jwt](https://github.com/malijs/jwt) | JWT authentication middleware. |
 | [logger](https://github.com/malijs/logger) | Development logging middleware. |
 | [metadata](https://github.com/malijs/metadata) | Metadata middleware. |
 | [metadata auth](https://github.com/malijs/metadata-auth) | Authorization metadata middleware. |

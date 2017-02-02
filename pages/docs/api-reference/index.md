@@ -128,7 +128,7 @@ Create a gRPC service
 
 | Param | Type | Description |
 | --- | --- | --- |
-| proto | <code>String</code> &#124; <code>Object</code> | Path to the protocol buffer definition file or the static service proto object itself |
+| proto | <code>String</code> &#124; <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
 | name | <code>Object</code> | Name of the service.                      In case of proto path the name of the service as defined in the proto definition.                      In case of proto object the name of the constructor. |
 | options | <code>Object</code> | Options to be passed to <code>grpc.load</code> |
 
@@ -186,7 +186,7 @@ app construction time for some reason.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| proto | <code>String</code> &#124; <code>Object</code> | Path to the protocol buffer definition file or the static service proto object itself |
+| proto | <code>String</code> &#124; <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
 | name | <code>Object</code> | Name of the service.                      In case of proto path the name of the service as defined in the proto definition.                      In case of proto object the name of the constructor. |
 | options | <code>Object</code> | Options to be passed to <code>grpc.load</code> |
 
@@ -282,4 +282,4 @@ We only bother showing settings.
 #### mali.inspect() ⇒ <code>Object</code>
 Inspect implementation.
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>    
+**Kind**: instance method of <code>[Mali](#Mali)</code>      
