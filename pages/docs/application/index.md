@@ -28,7 +28,18 @@ Node.js code.
 #### Dynamic
 
 When dynamically creating an application from static `.proto` file include the
-path to the `proto` file and the name of the service within the definition.
+path to the `proto` file.
+
+```js
+const path = require('path')
+const Mali = require('mali')
+
+const PROTO_PATH = path.resolve(__dirname, '../protos/helloworld.proto')
+const app = new Mali(PROTO_PATH)
+```
+
+To just use one of the services defined in the proto file state name (or an array of names) of the 
+service  within the definition in the second parameter.
 
 ```js
 const path = require('path')
@@ -40,8 +51,15 @@ const app = new Mali(PROTO_PATH, 'Greeter')
 
 #### Static
 
-When creating from statically generated Node.js code, we need the implementation
-and the name of the service constrcutor.
+Similarly we can use statically generated Node.js code
+
+```js
+const services = require('./static/helloworld_grpc_pb')
+const app = new Mali(services)
+```
+
+To use only specific services from the definition we need the implementation
+and the name of the service constrcutor(s).
 
 ```js
 const services = require('./static/helloworld_grpc_pb')
@@ -50,7 +68,55 @@ const app = new Mali(services, 'GreeterService')
 
 ### Middleware
 
-`app.use()` is used to add the given middleware or handler function to this application.
+`app.use(service, name, ...fns)` is used to add the given middleware or handler function to the application.
+
+If `service` and `name` are given, it applies `fns` for that call under that service.
+
+```js
+app.use('Greeter', 'sayHello', handler)
+```
+
+If `service` name is provided and matches one of the services defined in proto, but no `name` is 
+provided it applies the `fns` as middleware as service level middleware for all handlers in that service.
+
+```js
+app.use('Greeter', mwForGreeter)
+```
+
+If `service` is provided and no `name` is provided, and `service` does not match any of the service 
+names in the proto, assumes `service` is actually rpc call name. Uses `0`th property in internal 
+services object. Useful for protos with only one service.
+
+```js
+app.use('sayHello', handler)
+```
+
+If an `object` is provided, you can set middleware and handlers for all services
+
+```js
+app.use(mw1) // global for all services
+app.use('Service1', mw2) // applies to all Service1 handers
+app.use({
+  Service1: {
+    sayGoodbye: handler1, // has mw1, mw2
+    sayHello: [ mw3, handler2 ] // has mw1, mw2, mw3
+  },
+  Service2: {
+    saySomething: handler3 // only has mw1
+  }
+})
+```
+
+If `object` provided but `0`th key does not match any of the services in proto, assumes `0`th service.
+Useful for protos with only one service.
+
+```js
+app.use({
+  sayGoodbye: handler1, 
+  sayHello: [ mw3, handler2 ] 
+})
+```
+
 See [Middleware](http://mali.github.io/middleware]) for more information.
 
 ### Start
@@ -73,7 +139,7 @@ async function sayHello (ctx) {
 }
 
 function main () {
-  const app = new Mali(PROTO_PATH, 'Greeter')
+  const app = new Mali(PROTO_PATH)
   app.use({ sayHello })
   app.start('0.0.0.0:50051')
 }
@@ -82,7 +148,7 @@ function main () {
 The same application representation can be started on multiple ports if desired.
 
 ```js
-const app = new Mali(PROTO_PATH, 'Greeter')
+const app = new Mali(PROTO_PATH)
 app.use({ sayHello })
 const server1 = app.start('0.0.0.0:50051')
 const server2 = app.start('0.0.0.0:50052')
@@ -97,7 +163,7 @@ To shutdown all started servers just call `app.close()` method. The method retur
 a promise fulfilled when all started servers are shutdown.
 
 ```js
-const app = new Mali(PROTO_PATH, 'Greeter')
+const app = new Mali(PROTO_PATH)
 app.use({ sayHello })
 const server = app.start('0.0.0.0:50051')
 app.close().then(() => console.log('server(s) shut down.'))

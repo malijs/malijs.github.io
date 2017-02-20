@@ -24,7 +24,7 @@ async function logger (ctx, next) {
   console.log('%s [%s] - %s ms', ctx.name, ctx.type, ms);
 }
 
-const app = new Mali(PROTO_PATH, 'Greeter')
+const app = new Mali(PROTO_PATH)
 app.use({ sayHello })
 const server1 = app.start('0.0.0.0:50051')
 ```
