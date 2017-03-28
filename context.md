@@ -24,9 +24,21 @@ response message / object in case of `UNIRY` and `REQUEST_STREAM` calls, and to
 the output stream in case of `RESPONSE_STREAM` calls. When a stream it is automatically
 [piped](https://nodejs.org/api/stream.html#stream_event_pipe) into the call.
 
-<h4>ctx.name</h4>
+#### ctx.name
 
 The call name as defined within the protocol buffer definition.
+
+#### ctx.fullName
+
+The full call name as defined within the protocol buffer definition, including the package and service name.
+
+#### ctx.service
+
+The service name of the call.
+
+#### ctx.package
+
+The package name of the call.
 
 #### ctx.type
 
