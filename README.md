@@ -1,5 +1,7 @@
 # Mali
 
+> Minimalistic Node.js gRPC microservice framework
+
 ## What is Mali?
 
 Mali is a minimalistic [gRPC](http://grpc.io) microservice framework for
@@ -9,18 +11,9 @@ using modern Javasript patterns. A lot of Mali design is influenced and inspired
 by [Koa](http://koajs.com/), but applied to `gRPC` concepts. If you are familiar
 with Koa usage, you should find development with Mali similar.
 
-<div style="position: relative;
-    padding: 15px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #4c4a42;
-    background-color: #fff9ea;
-    border: 1px solid #dfd8c2;
-    border-radius: 3px;">
-<strong>Mali is still in development and preview state. It is good for exploration, but may not
+!> Mali is still in development and preview state. It is good for exploration, but may not
 be suitable for production use yet.
-</strong>
-</div>
+
 ## Features
 
 Mali builds on [gRPC](http://grpc.io) to provide unified patterns for handling

@@ -3,22 +3,22 @@
 ### Classes
 
 <dl>
-<dt><a href="#API-Context">Context</a></dt>
+<dt><a href="#/api?id=context">Context</a></dt>
 <dd><p>Represents a RPC call context.</p>
 </dd>
-<dt><a href="#API-Mali">Mali</a> ⇐ <code>Emitter</code></dt>
+<dt><a href="#/api?id=mali">Mali</a> ⇐ <code>Emitter</code></dt>
 <dd><p>Represents a gRPC service</p>
 </dd>
 </dl>
 
-<a name="Context"></a>
+<a name="context" data-id="context"></a>
 
 ### Context
 Represents a RPC call context.
 
 **Kind**: global class  
 
-* [Context](#API-Context)
+* <a href="#/api?id=context">Context</a>
     * [new Context()](#new_Context_new)
     * [.name](#Context+name) : <code>String</code>
     * [.fullName](#Context+fullName) : <code>String</code>
@@ -149,7 +149,7 @@ The application instance reference.
 The internal gRPC call instance reference.
 
 **Kind**: instance property of <code>[Context](#API-Context)</code>  
-<a name="Mali"></a>
+<a name="mali" data-id="mali"></a>
 
 ### Mali ⇐ <code>Emitter</code>
 Represents a gRPC service
@@ -157,7 +157,7 @@ Represents a gRPC service
 **Kind**: global class  
 **Extends**: <code>Emitter</code>  
 
-* [Mali](#API-Mali) ⇐ <code>Emitter</code>
+* <a href="#/api?id=mali">Mali</a> ⇐ <code>Emitter</code>
     * [new Mali(proto, name, options)](#new_Mali_new)
     * [.name](#Mali+name) : <code>String</code>
     * [.env](#Mali+env) : <code>String</code>
@@ -178,7 +178,7 @@ Create a gRPC service
 
 | Param | Type | Description |
 | --- | --- | --- |
-| proto | <code>String</code> \| <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
+| proto | <code>String</code>, <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
 | name | <code>Object</code> | Optional name of the service or an array of names. Otherwise all services are used.                      In case of proto path the name of the service as defined in the proto definition.                      In case of proto object the name of the constructor. |
 | options | <code>Object</code> | Options to be passed to <code>grpc.load</code> |
 
@@ -236,7 +236,7 @@ app construction time for some reason.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| proto | <code>String</code> \| <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
+| proto | <code>String</code>, <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
 | name | <code>Object</code> | Optional name of the service or an array of names. Otherwise all services are used.                      In case of proto path the name of the service as defined in the proto definition.                      In case of proto object the name of the constructor. |
 | options | <code>Object</code> | Options to be passed to <code>grpc.load</code> |
 
@@ -260,9 +260,9 @@ proto, assumes <code>0</code>th service. Useful for protos with only one service
 
 | Param | Type | Description |
 | --- | --- | --- |
-| service | <code>String</code> \| <code>Object</code> | Service name |
-| name | <code>String</code> \| <code>function</code> | RPC name |
-| ...fns | <code>function</code> \| <code>Array</code> | Middleware and/or handler |
+| service | <code>String</code>, <code>Object</code> | Service name |
+| name | <code>String</code>, <code>function</code> | RPC name |
+| ...fns | <code>function</code>, <code>Array</code> | Middleware and/or handler |
 
 **Example** *(Define handler for rpc function &#x27;fn1&#x27;)*  
 
