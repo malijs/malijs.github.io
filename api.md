@@ -1,12 +1,10 @@
-# API Reference
-
 ### Classes
 
 <dl>
-<dt>[Context](#Contextclass)</dt>
+<dt>[Context](#contextclass)</dt>
 <dd><p>Represents a RPC call context.</p>
 </dd>
-<dt>[Mali](#Maliclass) ⇐ <code>Emitter</code></dt>
+<dt>[Mali](#maliclass) ⇐ <code>Emitter</code></dt>
 <dd><p>Represents a gRPC service</p>
 </dd>
 </dl>
@@ -27,6 +25,7 @@ Represents a RPC call context.
     * [.type](#contexttype) : <code>String</code>
     * [.req](#contextreq) : <code>Object</code>, <code>Stream</code>
     * [.res](#contextres) : <code>Object</code>, <code>Stream</code>
+    * [.metadata](#contextmetadata) : <code>Object</code>
     * [.app](#contextapp) : <code>Object</code>
     * [.call](#contextcall) : <code>Object</code>
 
@@ -49,7 +48,7 @@ async function toUpper(ctx) {
 #### context.name : <code>String</code>
 The call function name.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 **Example**  
 
 ```js
@@ -61,7 +60,7 @@ console.log(ctx.name) // 'SayHello'
 #### context.fullName : <code>String</code>
 The full name of the call.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 **Example**  
 
 ```js
@@ -73,19 +72,19 @@ console.log(ctx.fullName) // '/helloworld.Greeter/SayHello'
 #### context.service : <code>String</code>
 The service name of the call.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 **Example**  
 
 ```js
 console.log(ctx.service) // 'Greeter'
 ```
 
-<a name="contextpackage" id="contextpackage" data-id="contexttype"></a>
+<a name="contextpackage" id="contextpackage" data-id="contextpackage"></a>
 
 #### context.package : <code>String</code>
 The package name of the call.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 **Example**  
 
 ```js
@@ -97,7 +96,7 @@ console.log(ctx.package) // 'helloworld'
 #### context.type : <code>String</code>
 The call type. One of <code>CallType</code> enums.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 **Example**  
 
 ```js
@@ -117,7 +116,7 @@ if(ctx.type === CallType.DUPLEX) {
 #### context.req : <code>Object</code>, <code>Stream</code>
 The request object or stream.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 **Example**  
 
 ```js
@@ -127,14 +126,26 @@ console.dir(ctx.req) // { name: 'Bob' }
 <a name="contextres" id="contextres" data-id="contextres"></a>
 
 #### context.res : <code>Object</code>, <code>Stream</code>
-The response object or stream.
-                            Should be set in handler.
+The response object or stream. Should be set in handler.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 **Example**  
 
 ```js
 ctx.res = { name: 'Bob' }
+```
+
+<a name="contextmetadata" id="contextmetadata" data-id="contextmetadata"></a>
+
+#### context.metadata : <code>Object</code>
+The call metadata if present.
+
+**Kind**: instance property of <code>[Context](#context)</code>  
+**Example**  
+
+```js
+console.log(ctx.metadata)
+// { 'user-agent': 'grpc-node/1.0.1 grpc-c/1.0.1 (osx; chttp2)' }
 ```
 
 <a name="contextapp" id="contextapp" data-id="contextapp"></a>
@@ -142,13 +153,13 @@ ctx.res = { name: 'Bob' }
 #### context.app : <code>Object</code>
 The application instance reference.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
-<a name="contextcall" data-id="contextcall"></a>
+**Kind**: instance property of <code>[Context](#context)</code>  
+<a name="contextcall" id="contextcall" data-id="contextcall"></a>
 
 #### context.call : <code>Object</code>
 The internal gRPC call instance reference.
 
-**Kind**: instance property of <code>[Context](#Context)</code>  
+**Kind**: instance property of <code>[Context](#context)</code>  
 <a name="maliclass" id="maliclass" data-id="maliclass"></a>
 
 ### Mali ⇐ <code>Emitter</code>
@@ -157,8 +168,8 @@ Represents a gRPC service
 **Kind**: global class  
 **Extends**: <code>Emitter</code>  
 
-* [Mali](#maliclass) ⇐ <code>Emitter</code>
-    * [new Mali(proto, name, options)](#newmalinew)
+* [Mali](#mali) ⇐ <code>Emitter</code>
+    * [new Mali(proto, name, options)](#new_Mali_new)
     * [.name](#maliname) : <code>String</code>
     * [.env](#malienv) : <code>String</code>
     * [.silent](#malisilent) : <code>Boolean</code>
@@ -167,10 +178,10 @@ Represents a gRPC service
     * [.onerror(err)](#malionerror)
     * [.start(port, creds)](#malistart) ⇒ <code>Object</code>
     * [.close()](#maliclose)
-    * [.toJSON()](#malitojson) ⇒ <code>Object</code>
+    * [.toJSON()](#malitoJSON) ⇒ <code>Object</code>
     * [.inspect()](#maliinspect) ⇒ <code>Object</code>
 
-<a name="newmalinew" id="newmalinew" data-id="newmalinew"></a>
+<a name="new_mali_new" id="new_mali_new" data-id="new_mali_new"></a>
 
 #### new Mali(proto, name, options)
 Create a gRPC service
@@ -178,7 +189,7 @@ Create a gRPC service
 
 | Param | Type | Description |
 | --- | --- | --- |
-| proto | <code>String</code><br /><code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
+| proto | <code>String</code>, <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
 | name | <code>Object</code> | Optional name of the service or an array of names. Otherwise all services are used.                      In case of proto path the name of the service as defined in the proto definition.                      In case of proto object the name of the constructor. |
 | options | <code>Object</code> | Options to be passed to <code>grpc.load</code> |
 
@@ -201,7 +212,7 @@ const app = new Mali(services, 'GreeterService')
 #### mali.name : <code>String</code>
 The service name
 
-**Kind**: instance property of <code>[Mali](#Mali)</code>  
+**Kind**: instance property of <code>[Mali](#mali)</code>  
 **Example**  
 
 ```js
@@ -213,7 +224,7 @@ console.log(app.name) // 'Greeter'
 #### mali.env : <code>String</code>
 The environment. Taken from <code>process.end.NODE_ENV</code>. Default: <code>development</code>
 
-**Kind**: instance property of <code>[Mali](#Mali)</code>  
+**Kind**: instance property of <code>[Mali](#mali)</code>  
 **Example**  
 
 ```js
@@ -225,18 +236,18 @@ console.log(app.env) // 'development'
 #### mali.silent : <code>Boolean</code>
 Whether to log errors in <code>onerror</code>. Default: <code>false</code>
 
-**Kind**: instance property of <code>[Mali](#Mali)</code>  
+**Kind**: instance property of <code>[Mali](#mali)</code>  
 <a name="maliinit" id="maliinit" data-id="maliinit"></a>
 
 #### mali.init(proto, name, options)
 Init's the app with the proto. Basically this can be used if you don't have the data at
 app construction time for some reason.
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>  
+**Kind**: instance method of <code>[Mali](#mali)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| proto | <code>String</code><br/><code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
+| proto | <code>String</code>, <code>Object</code> | Path to the protocol buffer definition file                              - Object specifying <code>root</code> directory and <code>file</code> to load                              - The static service proto object itself |
 | name | <code>Object</code> | Optional name of the service or an array of names. Otherwise all services are used.                      In case of proto path the name of the service as defined in the proto definition.                      In case of proto object the name of the constructor. |
 | options | <code>Object</code> | Options to be passed to <code>grpc.load</code> |
 
@@ -256,13 +267,13 @@ If an <code>object</code> is provided, you can set middleware and handlers for a
 If <code>object</code> provided but <code>0</code>th key does not match any of the services in
 proto, assumes <code>0</code>th service. Useful for protos with only one service.
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>  
+**Kind**: instance method of <code>[Mali](#mali)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| service | <code>String</code><br /><code>Object</code> | Service name |
-| name | <code>String</code><br /><code>function</code> | RPC name |
-| ...fns | <code>function</code><br /><code>Array</code> | Middleware and/or handler |
+| service | <code>String</code>, <code>Object</code> | Service name |
+| name | <code>String</code>, <code>function</code> | RPC name |
+| ...fns | <code>function</code>, <code>Array</code> | Middleware and/or handler |
 
 **Example** *(Define handler for rpc function &#x27;fn1&#x27;)*  
 
@@ -322,7 +333,7 @@ app.use({
 #### mali.onerror(err)
 Default error handler.
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>  
+**Kind**: instance method of <code>[Mali](#mali)</code>  
 
 | Param | Type |
 | --- | --- |
@@ -333,7 +344,7 @@ Default error handler.
 #### mali.start(port, creds) ⇒ <code>Object</code>
 Start the service. All middleware and handlers have to be set up prior to calling <code>start</code>.
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>  
+**Kind**: instance method of <code>[Mali](#mali)</code>  
 **Returns**: <code>Object</code> - server - The <code>grpc.Server</code> instance  
 
 | Param | Type | Default | Description |
@@ -352,7 +363,7 @@ app.start('localhost:50051')
 #### mali.close()
 Close the service(s).
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>  
+**Kind**: instance method of <code>[Mali](#mali)</code>  
 **Example**  
 
 ```js
@@ -365,11 +376,11 @@ app.close()
 Return JSON representation.
 We only bother showing settings.
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>  
+**Kind**: instance method of <code>[Mali](#mali)</code>  
 **Api**: public  
 <a name="maliinspect" id="maliinspect" data-id="maliinspect"></a>
 
 #### mali.inspect() ⇒ <code>Object</code>
 Inspect implementation.
 
-**Kind**: instance method of <code>[Mali](#Mali)</code>   
+**Kind**: instance method of <code>[Mali](#mali)</code>  
