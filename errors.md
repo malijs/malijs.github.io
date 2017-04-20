@@ -37,7 +37,7 @@ err.code = 5000
 err.metadata = new grpc.Metadata()
 err.metadata.add('type', 'AUTH')
 err.metadata.add('code', '5000')
-err.metadata.add('statuc', 'INVALID_TOKEN')
+err.metadata.add('status', 'INVALID_TOKEN')
 throw err
 ```
 
