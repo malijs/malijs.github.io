@@ -62,7 +62,7 @@ we could stream this to the client using
 [`JSONStream`](https://github.com/dominictarr/JSONStream) module:
 
 ```js
-app.use('sayHellos', function (ctx) {
+app.use('sayHellos', function sayHellos (ctx) {
   ctx.res = fs
     .createReadStream('messages.json')
     .pipe(JSONStream.parse('*'))
@@ -80,7 +80,7 @@ For example if the client sent a stream of messages it might want to know the nu
 successfully written and failed. Using highland we could do something like:
 
 ```js
-app.use('writeHellos', async function (ctx) {
+app.use('writeHellos', async function writeHellos (ctx) {
   const stream = fs.createWriteStream('messages.txt')
   let succeeded = 0
   let failed = 0
@@ -96,8 +96,9 @@ app.use('writeHellos', async function (ctx) {
         }
       })
       .toCallback((err, result) => {
-        if(err) reject(err)
-        else resolve({ succeeded, failed })
+        if (err) return reject(err)
+        ctx.res = { succeeded, failed }
+        resolve()
       })
   })
 })
