@@ -80,13 +80,13 @@ For example if the client sent a stream of messages it might want to know the nu
 successfully written and failed. Using highland we could do something like:
 
 ```js
-app.use('writeHellos', async function writeHellos (ctx) {
+async function doWork (inputStream) {
   const stream = fs.createWriteStream('messages.txt')
   let succeeded = 0
   let failed = 0
 
   return new Promise((resolve, reject) => {
-    highland(ctx.req)
+    highland(inputStream)
       .tap(message => {
         try {
           stream.write(JSON.stringify(message))
@@ -97,15 +97,19 @@ app.use('writeHellos', async function writeHellos (ctx) {
       })
       .toCallback((err, result) => {
         if (err) return reject(err)
-        ctx.res = { succeeded, failed }
-        resolve()
+        resolve({ succeeded, failed })
       })
   })
+}
+
+app.use('writeHellos', async function writeHellos (ctx) {
+  // consume all the input and do some work based on it and return a final computation value
+  ctx.res = await doWork(ctx.req)
 })
 ```
 
-Note that since this is an asynchronous operation we must return a `Promise` that
-is fulfilled only once we're done with all the values emitted from the input stream.
+Note that since this is an asynchronous operation we (a)wait for a fulfilment of `Promise` once
+we're done with all the values emitted from the input stream.
 
 #### DUPLEX
 
