@@ -17,6 +17,7 @@ A collection of useful links for developing with Mali.
 ### Stream
 
 * [Highland](http://highlandjs.org) - Highland.js stream utility
+* [mississippi](https://github.com/maxogden/mississippi) - A collection of useful stream utility modules
 * [Oboe.js](http://oboejs.com) - Streaming JSON loading for Node and browsers
 * [stream-utils](https://github.com/stream-utils) - stream utilities
 * [event-stream](https://github.com/dominictarr/event-stream) - event stream utility module
