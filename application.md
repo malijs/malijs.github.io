@@ -121,8 +121,8 @@ See [Middleware](http://mali.github.io/middleware) for more information.
 
 Application can be started using the `start` method and passing the port. The method returns a
 `grpc.Server` instance. It's just sugar for creating the native gRPC Server; calling
-`addProtoService` or `addService` depending on what construction mechanism was used;
-hooking up the composed middleware, binding the port and starting the native server.
+`grpc.Server.addService()`, hooking up the composed middleware, binding the port and 
+starting the native server.
 
 All middleware and handlers have to be set up prior to calling `start`.
 
