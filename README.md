@@ -11,9 +11,6 @@ using modern Javasript patterns. A lot of Mali design is influenced and inspired
 by [Koa](http://koajs.com/), but applied to `gRPC` concepts. If you are familiar
 with Koa usage, you should find development with Mali similar.
 
-!> Mali is still in development and preview state. It is good for exploration, but may not
-be suitable for production use yet.
-
 ## Features
 
 Mali builds on [gRPC](http://grpc.io) to provide unified patterns for handling

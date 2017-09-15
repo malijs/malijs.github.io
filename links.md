@@ -14,9 +14,10 @@ A collection of useful links for developing with Mali.
 * [gRPC status code mapping](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md) - HTTP to gRPC Status Code Mapping
 * [protoc-gen-doc](https://github.com/pseudomuto/protoc-gen-doc) - Documentation generator plugin for Google Protocol Buffers
 * [Node.js Proto Files](https://github.com/googleapis/nodejs-proto-files) - All of the Google API's protocol buffer files
+* [grpc-contrb](https://github.com/grpc/grpc-contrib) - gRPC ecosystem that complements gRPC core
 * [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) - gRPC to JSON proxy generator
 
-### Promise
+### Promises
 
 * [Awesome promise utilities](https://github.com/wbinnssmith/awesome-promises#convenience-utilities) - a list of good promise convenience utilities
 
