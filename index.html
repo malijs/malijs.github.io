@@ -1,42 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Mali: Minimalistic Node.js gRPC microservice framework</title>
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-</head>
-<body>
-  <div id="app"></div>
-</body>
-<script>
-  window.$docsify = {
-    repo: 'https://github.com/malijs/mali',
-    name: 'Mali',
-    auto2top: true,
-    executeScript: true,
-    loadSidebar: true,
-    subMaxLevel: 2,
-    coverpage: true,
-    maxLevel: 3,
-    themeColor: '#3CBCBC',
-    markdown: {
-      smartypants: true,
-      renderer: {
-        tablerow: function (content) {
-          const re = /\\<\/td>\n<td>/gi
-          if (content.indexOf('\\</td>\n<td>') >= 0) {
-            content = content.replace(re, '</br>')
-          }
-          return '<tr>\n' + content + '</tr>\n';
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>My Awesome Doc</title>
+    <!-- the docute client styles -->
+    <link rel="stylesheet" href="https://unpkg.com/docute/dist/docute.css">
+    <style>
+        .markdown-body a {
+            color: #42b983;
+            color: var(--theme-color, #42b983);
         }
-      }
-    }
-  }
-</script>
-<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-javascript.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-protobuf.min.js"></script>
+
+        body {
+          color: rgb(52, 73, 94);
+          font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;
+          font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!-- load the docute client library -->
+    <script src="https://unpkg.com/docute/dist/docute.js"></script>
+    <!-- bootstrap your docute app! -->
+    <script src="https://unpkg.com/prismjs/components/prism-javascript.js"></script>
+    <script src="https://unpkg.com/prismjs/components/prism-json.js"></script>
+    <script>
+        docute.init({
+            landing: 'landing.html'
+        })
+    </script>
+</body>
+
 </html>
