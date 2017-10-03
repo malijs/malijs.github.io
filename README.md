@@ -14,7 +14,7 @@ with Koa usage, you should find development with Mali similar.
 ## Features
 
 Mali builds on [gRPC](http://grpc.io) to provide unified patterns for handling
-different form of calls. It strives to be minimalistic and simple, without adding
+different forms of calls. It strives to be minimalistic and simple, without adding
 additional features. Rather we try to provide mechanism for adding and composing
 additional features through composable middleware.
 

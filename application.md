@@ -75,7 +75,7 @@ app.use('Greeter', 'sayHello', handler)
 ```
 
 If `service` name is provided and matches one of the services defined in proto, but no `name` is 
-provided it applies the `fns` as middleware as service level middleware for all handlers in that service.
+provided it applies the `fns` as service level middleware for all handlers in that service.
 
 ```js
 app.use('Greeter', mwForGreeter)

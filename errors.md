@@ -43,5 +43,5 @@ throw err
 
 Since this would be pretty common, there are a couple of utility modules:
 
-* [create-grpc-error](https://github.com/bojand/create-grpc-error) - Function for creating Errors for gRPC responses
+* [grpc-create-error](https://github.com/bojand/grpc-create-error) - Function for creating Errors for gRPC responses
 * [grpc-error](https://github.com/bojand/grpc-error) - `GRPCError` class that wraps `create-grpc-error`
