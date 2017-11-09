@@ -44,6 +44,18 @@ app.use(async function logger (ctx, next) {
 })
 ```
 
+#### Metadata
+
+Mali supports both header, trailer and error metadata.
+
+```js
+app.use('getUser', async function (ctx) {
+  ctx.set('headerFieldFoo', 'fooValue')
+  ctx.res = await app.db.get(ctx.req.id)
+  ctx.setStatus('statusFieldBar', 'barValue')
+})
+```
+
 ## Example usage
 
 ```javascript
