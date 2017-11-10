@@ -93,11 +93,11 @@ Get request metadata value. This is an alias to `ctx.request.get()`.
 
 #### ctx.set()
 
-Set response header metadata value. This is an alias to `ctx.response.set()`.
+Set a response header metadata value. This is an alias to `ctx.response.set()`.
 
 #### ctx.sendMetadata()
 
-Send response header metadata. This is an alias to `ctx.response.sendMetadata()`.
+Send response header metadata. Optionally provide header metadata object directly as an argument and that is set and sent. This is an alias to `ctx.response.sendMetadata()`.
 
 #### ctx.getStatus()
 
