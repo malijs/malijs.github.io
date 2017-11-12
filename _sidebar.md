@@ -1,9 +1,9 @@
 - Guide
   - [Getting Started](/getting_started)
   - [Application](/application)
+  - [Context](/context)
   - [Request](/request)
   - [Response](/response)
-  - [Context](/context)
   - [Handling Requests](/requests)
   - [Metadata](/metadata)
   - [Middleware](/middleware)
