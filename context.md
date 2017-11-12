@@ -10,20 +10,20 @@ provides a few helpful properties and methods for inspecting and handling gRPC r
 
 ```js
 async function sayHello(ctx) {
-// get some value from request metadata
-console.log(ctx.get('foo'))
+  // get some value from request metadata
+  console.log(ctx.get('foo'))
 
-// set some response header metadata
-ctx.set('foo', 'bar')
+  // set some response header metadata
+  ctx.set('foo', 'bar')
 
-// get some data from call request
-const name = ctx.req.name
+  // get some data from call request
+  const name = ctx.req.name
 
-// create response payload
-ctx.res = { message: `Hello ${name}!` }
+  // create response payload
+  ctx.res = { message: `Hello ${name}!` }
 
-// set response status / trailer metadata
-ctx.setStatus('biz', 'baz')
+  // set response status / trailer metadata
+  ctx.setStatus('biz', 'baz')
 }
 ```
 
@@ -125,7 +125,8 @@ console.log(ctx.metadata)
 Get request metadata value. This is an alias to `ctx.request.get()`.
 
 ```js
-console.log(ctx.get('user-agent')) // 'grpc-node/1.7.1 grpc-c/1.7.1 (osx; chttp2)'
+console.log(ctx.get('user-agent'))
+// 'grpc-node/1.7.1 grpc-c/1.7.1 (osx; chttp2)'
 ```
 
 #### ctx.set()
@@ -140,7 +141,7 @@ Or we can set using an object:
 
 ```js
 ctx.set({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -150,7 +151,7 @@ Send response header metadata. Optionally provide header metadata object directl
 
 ```js
 ctx.sendMetadata({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -166,7 +167,7 @@ Or using an object
 
 ```js
 ctx.setStatus({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -175,5 +176,5 @@ foo: 'bar'
 Get response status / trailer metadata value. This is an alias to `ctx.response.getStatus()`.
 
 ```js
-ctx.setStatus('foo', 'bar')
+console.log(ctx.getStatus('foo')) // 'bar'
 ```

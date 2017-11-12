@@ -8,16 +8,16 @@ Mali Response class encasulates the response of a call. Clients to not create th
 
 ```js
 async function sayHello(ctx) {
-// set some value to the response header metadata
-ctx.response.set('foo', 'bar')) // 'bar'
+  // set some value to the response header metadata
+  ctx.response.set('foo', 'bar')) // 'bar'
 
-console.log(ctx.response.type) // 'unary'
+  console.log(ctx.response.type) // 'unary'
 
-// set some value to the response trailer / status metatada
-ctx.response.set('biz', 'baz')
+  // set some value to the response trailer / status metatada
+  ctx.response.set('biz', 'baz')
 
-// set the actual payload
-ctx.response.res = { message: `Hello ${ctx.req.name}!` }
+  // set the actual payload
+  ctx.response.res = { message: `Hello ${ctx.req.name}!` }
 }
 ```
 
@@ -83,6 +83,14 @@ ctx.response.res.write({ foo: 'bar' })
 Get a response header metadata value.
 
 ```js
+console.log(ctx.response.get('foo')) // 'bar'
+```
+
+#### response.set()
+
+Set a response header metadata value.
+
+```js
 ctx.response.set('foo', 'bar')
 ```
 
@@ -92,14 +100,6 @@ Or using an object:
 ctx.response.set({
 foo: 'bar'
 })
-```
-
-#### response.set()
-
-Set a response header metadata value.
-
-```js
-console.log(ctx.response.get('foo')) // 'bar'
 ```
 
 #### response.getMetadata()
@@ -112,13 +112,9 @@ Send response header metadata. Optionally provide header metadata object directl
 
 ```js
 ctx.response.sendMetadata({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
-
-#### reponse.getStatus()
-
-Get a reponse status / trailer metadata value.
 
 #### reponse.setStatus()
 
@@ -132,14 +128,18 @@ Or using an object
 
 ```js
 ctx.response.setStatus({
-foo: 'bar'
+  foo: 'bar'
 })
+```
+
+#### reponse.getStatus()
+
+Get a reponse status / trailer metadata value.
+
+```js
+console.log(ctx.response.getStatus('foo')) // 'bar'
 ```
 
 #### reponse.getStatusMetadata()
 
 Get reponse status / trailer metadata as a `grpc.Metadata` object.
-
-```js
-ctx.setStatus('foo', 'bar')
-```
