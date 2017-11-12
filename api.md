@@ -175,13 +175,13 @@ app.use({ MyService: { fn1, fn2: [mw1, mw2, fn2] } })
 app.use(mw1) // global for all services
 app.use('Service1', mw2) // applies to all Service1 handers
 app.use({
-Service1: {
-sayGoodbye: handler1, // has mw1, mw2
-sayHello: [ mw3, handler2 ] // has mw1, mw2, mw3
-},
-Service2: {
-saySomething: handler3 // only has mw1
-}
+  Service1: {
+    sayGoodbye: handler1, // has mw1, mw2
+    sayHello: [ mw3, handler2 ] // has mw1, mw2, mw3
+  },
+  Service2: {
+    saySomething: handler3 // only has mw1
+  }
 })
 ```
 
@@ -370,7 +370,7 @@ console.log(ctx.type) // 'unary'
 
 ```js
 if(ctx.type === CallType.DUPLEX) {
-console.log('Duplex stream call')
+  console.log('Duplex stream call')
 }
 ```
 
@@ -444,7 +444,7 @@ ctx.set('foo', 'bar')
 
 ```js
 ctx.set({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -464,7 +464,7 @@ This is an alias to `ctx.response.sendMetadata()`.
 
 ```js
 ctx.sendMetadata({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -513,7 +513,7 @@ ctx.setStatus('foo', 'bar')
 
 ```js
 ctx.setStatus({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -592,7 +592,7 @@ console.log(ctx.request.type) // 'unary'
 
 ```js
 if(ctx.request.type === CallType.DUPLEX) {
-console.log('Duplex stream call')
+  console.log('Duplex stream call')
 }
 ```
 
@@ -747,7 +747,7 @@ ctx.response.set('foo', 'bar')
 
 ```js
 ctx.response.set({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -791,7 +791,7 @@ Sends the response header metadata. Optionally (re)sets the header metadata as w
 
 ```js
 ctx.response.sendMetadata({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -843,7 +843,7 @@ ctx.response.setStatus('foo', 'bar')
 
 ```js
 ctx.response.setStatus({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
