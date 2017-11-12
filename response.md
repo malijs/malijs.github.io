@@ -98,7 +98,7 @@ Or using an object:
 
 ```js
 ctx.response.set({
-foo: 'bar'
+  foo: 'bar'
 })
 ```
 
@@ -108,7 +108,7 @@ Get response header metadata as a `grpc.Metadata` object.
 
 #### response.sendMetadata()
 
-Send response header metadata. Optionally provide header metadata object directly as an argument and that is set and sent. If param is not provided `sendMetadata` sends the existing metadata in the response. If it is provided existin metadata is cleared and is set to the object adn then sent. This is an alias to `ctx.response.sendMetadata()`.
+Send response header metadata. Optionally provide header metadata object directly as an argument and that is set and sent. If param is not provided `sendMetadata` sends the existing metadata in the response. If it is provided existin metadata is cleared and is set to the object adn then sent.
 
 ```js
 ctx.response.sendMetadata({
