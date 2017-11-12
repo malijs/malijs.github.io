@@ -10,20 +10,20 @@ provides a few helpful properties and methods for inspecting and handling gRPC r
 
 ```js
 async function sayHello(ctx) {
-  // get some value from request metadata
-  console.log(ctx.get('foo'))
-  
-  // set some response header metadata
-  ctx.set('foo', 'bar')
+// get some value from request metadata
+console.log(ctx.get('foo'))
 
-  // get some data from call request
-  const name = ctx.req.name
+// set some response header metadata
+ctx.set('foo', 'bar')
 
-  // create response payload
-  ctx.res = { message: `Hello ${name}!` }
+// get some data from call request
+const name = ctx.req.name
 
-  // set response status / trailer metadata
-  ctx.setStatus('biz', 'baz')
+// create response payload
+ctx.res = { message: `Hello ${name}!` }
+
+// set response status / trailer metadata
+ctx.setStatus('biz', 'baz')
 }
 ```
 
@@ -140,7 +140,7 @@ Or we can set using an object:
 
 ```js
 ctx.set({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -150,7 +150,7 @@ Send response header metadata. Optionally provide header metadata object directl
 
 ```js
 ctx.sendMetadata({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -166,7 +166,7 @@ Or using an object
 
 ```js
 ctx.setStatus({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 

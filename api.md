@@ -26,17 +26,17 @@ Represents a gRPC service
 **Extends**: <code>Emitter</code>  
 
 * [Mali](#Mali) ⇐ <code>Emitter</code>
-    * [new Mali(proto, name, options)](#new_Mali_new)
-    * [.silent](#Malisilent) : <code>Boolean</code>
-    * [.name](#Maliname) : <code>String</code>
-    * [.env](#Malienv) : <code>String</code>
-    * [.init(proto, name, options)](#Maliinit)
-    * [.use(service, name, ...fns)](#Maliuse)
-    * [.onerror(err)](#Malionerror)
-    * [.start(port, creds)](#Malistart) ⇒ <code>Object</code>
-    * [.close()](#Maliclose)
-    * [.toJSON()](#MalitoJSON) ⇒ <code>Object</code>
-    * [.inspect()](#Maliinspect) ⇒ <code>Object</code>
+* [new Mali(proto, name, options)](#new_Mali_new)
+* [.silent](#Malisilent) : <code>Boolean</code>
+* [.name](#Maliname) : <code>String</code>
+* [.env](#Malienv) : <code>String</code>
+* [.init(proto, name, options)](#Maliinit)
+* [.use(service, name, ...fns)](#Maliuse)
+* [.onerror(err)](#Malionerror)
+* [.start(port, creds)](#Malistart) ⇒ <code>Object</code>
+* [.close()](#Maliclose)
+* [.toJSON()](#MalitoJSON) ⇒ <code>Object</code>
+* [.inspect()](#Maliinspect) ⇒ <code>Object</code>
 
 <a name="new_mali_new" id="new_mali_new" data-id="new_mali_new"></a>
 
@@ -175,13 +175,13 @@ app.use({ MyService: { fn1, fn2: [mw1, mw2, fn2] } })
 app.use(mw1) // global for all services
 app.use('Service1', mw2) // applies to all Service1 handers
 app.use({
-  Service1: {
-    sayGoodbye: handler1, // has mw1, mw2
-    sayHello: [ mw3, handler2 ] // has mw1, mw2, mw3
-  },
-  Service2: {
-    saySomething: handler3 // only has mw1
-  }
+Service1: {
+sayGoodbye: handler1, // has mw1, mw2
+sayHello: [ mw3, handler2 ] // has mw1, mw2, mw3
+},
+Service2: {
+saySomething: handler3 // only has mw1
+}
 })
 ```
 
@@ -250,23 +250,23 @@ Represents the application and call context. Clients to not create this. Mali do
 **Summary**: Represents a Mali call context  
 
 * [Context](#Context)
-    * [.name](#Contextname) : <code>String</code>
-    * [.fullName](#ContextfullName) : <code>String</code>
-    * [.service](#Contextservice) : <code>String</code>
-    * [.package](#Contextpackage) : <code>String</code>
-    * [.app](#Contextapp) : <code>Object</code>
-    * [.call](#Contextcall) : <code>Object</code>
-    * [.request](#Contextrequest) : <code>Object</code>
-    * [.response](#Contextresponse) : <code>Object</code>
-    * [.req](#Contextreq) : <code>Object</code> \| <code>Stream</code>
-    * [.type](#Contexttype) : <code>String</code>
-    * [.metadata](#Contextmetadata) : <code>String</code>
-    * [.get](#Contextget) ⇒ <code>\*</code>
-    * [.res](#Contextres) : <code>Object</code> \| <code>Stream</code>
-    * [.set](#Contextset) : <code>function</code>
-    * [.sendMetadata](#ContextsendMetadata) : <code>function</code>
-    * [.getStatus](#ContextgetStatus) ⇒ <code>\*</code>
-    * [.setStatus](#ContextsetStatus) : <code>function</code>
+* [.name](#Contextname) : <code>String</code>
+* [.fullName](#ContextfullName) : <code>String</code>
+* [.service](#Contextservice) : <code>String</code>
+* [.package](#Contextpackage) : <code>String</code>
+* [.app](#Contextapp) : <code>Object</code>
+* [.call](#Contextcall) : <code>Object</code>
+* [.request](#Contextrequest) : <code>Object</code>
+* [.response](#Contextresponse) : <code>Object</code>
+* [.req](#Contextreq) : <code>Object</code> \| <code>Stream</code>
+* [.type](#Contexttype) : <code>String</code>
+* [.metadata](#Contextmetadata) : <code>String</code>
+* [.get](#Contextget) ⇒ <code>\*</code>
+* [.res](#Contextres) : <code>Object</code> \| <code>Stream</code>
+* [.set](#Contextset) : <code>function</code>
+* [.sendMetadata](#ContextsendMetadata) : <code>function</code>
+* [.getStatus](#ContextgetStatus) ⇒ <code>\*</code>
+* [.setStatus](#ContextsetStatus) : <code>function</code>
 
 <a name="contextname" id="contextname" data-id="contextname"></a>
 
@@ -370,7 +370,7 @@ console.log(ctx.type) // 'unary'
 
 ```js
 if(ctx.type === CallType.DUPLEX) {
-  console.log('Duplex stream call')
+console.log('Duplex stream call')
 }
 ```
 
@@ -444,7 +444,7 @@ ctx.set('foo', 'bar')
 
 ```js
 ctx.set({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -464,7 +464,7 @@ This is an alias to `ctx.response.sendMetadata()`.
 
 ```js
 ctx.sendMetadata({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -513,7 +513,7 @@ ctx.setStatus('foo', 'bar')
 
 ```js
 ctx.setStatus({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -526,13 +526,13 @@ Clients to not create this. Mali does it for us.
 **Kind**: global class  
 
 * [Request](#Request)
-    * [new Request(call, type)](#new_Request_new)
-    * [.call](#Requestcall) : <code>Object</code>
-    * [.req](#Requestreq) : <code>Object</code> \| <code>Stream</code>
-    * [.metadata](#Requestmetadata) : <code>Object</code>
-    * [.type](#Requesttype) : <code>String</code>
-    * [.getMetadata()](#RequestgetMetadata) ⇒ <code>Object</code>
-    * [.get(field)](#Requestget) ⇒ <code>\*</code>
+* [new Request(call, type)](#new_Request_new)
+* [.call](#Requestcall) : <code>Object</code>
+* [.req](#Requestreq) : <code>Object</code> \| <code>Stream</code>
+* [.metadata](#Requestmetadata) : <code>Object</code>
+* [.type](#Requesttype) : <code>String</code>
+* [.getMetadata()](#RequestgetMetadata) ⇒ <code>Object</code>
+* [.get(field)](#Requestget) ⇒ <code>\*</code>
 
 <a name="new_request_new" id="new_request_new" data-id="new_request_new"></a>
 
@@ -592,7 +592,7 @@ console.log(ctx.request.type) // 'unary'
 
 ```js
 if(ctx.request.type === CallType.DUPLEX) {
-  console.log('Duplex stream call')
+console.log('Duplex stream call')
 }
 ```
 
@@ -630,19 +630,19 @@ Clients to not create this. Mali does it for us.
 **Kind**: global class  
 
 * [Response](#Response)
-    * [new Response(call, type)](#new_Response_new)
-    * [.call](#Responsecall) : <code>Object</code>
-    * [.type](#Responsetype) : <code>String</code>
-    * [.metadata](#Responsemetadata) : <code>Object</code>
-    * [.status](#Responsestatus) : <code>Object</code>
-    * [.res](#Responseres) : <code>Object</code> \| <code>Stream</code>
-    * [.set(field, val)](#Responseset)
-    * [.get(field)](#Responseget) ⇒ <code>\*</code>
-    * [.getMetadata()](#ResponsegetMetadata) ⇒ <code>Object</code>
-    * [.sendMetadata(md)](#ResponsesendMetadata)
-    * [.getStatus(field)](#ResponsegetStatus) ⇒ <code>\*</code>
-    * [.setStatus(field, val)](#ResponsesetStatus)
-    * [.getStatusMetadata()](#ResponsegetStatusMetadata) ⇒ <code>Object</code>
+* [new Response(call, type)](#new_Response_new)
+* [.call](#Responsecall) : <code>Object</code>
+* [.type](#Responsetype) : <code>String</code>
+* [.metadata](#Responsemetadata) : <code>Object</code>
+* [.status](#Responsestatus) : <code>Object</code>
+* [.res](#Responseres) : <code>Object</code> \| <code>Stream</code>
+* [.set(field, val)](#Responseset)
+* [.get(field)](#Responseget) ⇒ <code>\*</code>
+* [.getMetadata()](#ResponsegetMetadata) ⇒ <code>Object</code>
+* [.sendMetadata(md)](#ResponsesendMetadata)
+* [.getStatus(field)](#ResponsegetStatus) ⇒ <code>\*</code>
+* [.setStatus(field, val)](#ResponsesetStatus)
+* [.getStatusMetadata()](#ResponsegetStatusMetadata) ⇒ <code>Object</code>
 
 <a name="new_response_new" id="new_response_new" data-id="new_response_new"></a>
 
@@ -747,7 +747,7 @@ ctx.response.set('foo', 'bar')
 
 ```js
 ctx.response.set({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -791,7 +791,7 @@ Sends the response header metadata. Optionally (re)sets the header metadata as w
 
 ```js
 ctx.response.sendMetadata({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -843,7 +843,7 @@ ctx.response.setStatus('foo', 'bar')
 
 ```js
 ctx.response.setStatus({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -854,4 +854,4 @@ Gets the response status / trailer metadata as a `grpc.Metadata` object instance
 
 **Kind**: instance method of [<code>Response</code>](#Response)  
 **Returns**: <code>Object</code> - response status / trailer metadata  
- 
+

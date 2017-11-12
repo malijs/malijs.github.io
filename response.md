@@ -8,16 +8,16 @@ Mali Response class encasulates the response of a call. Clients to not create th
 
 ```js
 async function sayHello(ctx) {
-  // set some value to the response header metadata
-  ctx.response.set('foo', 'bar')) // 'bar'
-  
-  console.log(ctx.response.type) // 'unary'
+// set some value to the response header metadata
+ctx.response.set('foo', 'bar')) // 'bar'
 
-  // set some value to the response trailer / status metatada
-  ctx.response.set('biz', 'baz')
+console.log(ctx.response.type) // 'unary'
 
-  // set the actual payload
-  ctx.response.res = { message: `Hello ${ctx.req.name}!` }
+// set some value to the response trailer / status metatada
+ctx.response.set('biz', 'baz')
+
+// set the actual payload
+ctx.response.res = { message: `Hello ${ctx.req.name}!` }
 }
 ```
 
@@ -90,7 +90,7 @@ Or using an object:
 
 ```js
 ctx.response.set({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -112,7 +112,7 @@ Send response header metadata. Optionally provide header metadata object directl
 
 ```js
 ctx.response.sendMetadata({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 
@@ -132,7 +132,7 @@ Or using an object
 
 ```js
 ctx.response.setStatus({
-  foo: 'bar'
+foo: 'bar'
 })
 ```
 

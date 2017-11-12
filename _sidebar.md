@@ -1,6 +1,8 @@
 - Guide
   - [Getting Started](/getting_started)
   - [Application](/application)
+  - [Request](/request)
+  - [Response](/response)
   - [Context](/context)
   - [Request](/request)
   - [Response](/response)
