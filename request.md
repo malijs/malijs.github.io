@@ -10,7 +10,12 @@ Mali Request class encasulates the request of a call. Clients to not create this
 async function sayHello(ctx) {
   // get some value from request metadata
   console.log(ctx.request.get('foo')) // 'bar'
+
+  // get the call type
   console.log(ctx.request.type) // 'unary'
+
+  // get the request payload
+  console.log(ctx.request.req) // { name: 'Bob' }
 }
 ```
 
