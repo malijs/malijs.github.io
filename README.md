@@ -58,7 +58,7 @@ app.use('getUser', async function (ctx) {
 
 ## Example usage
 
-```javascript
+```js
 const path = require('path')
 const Mali = require('mali')
 
