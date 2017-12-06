@@ -2,7 +2,7 @@
 
 ### Installation
 
-```js
+```sh
 $ npm install mali
 ```
 
