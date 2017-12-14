@@ -156,7 +156,7 @@ We can pass [server credential options](http://www.grpc.io/grpc/node/global.html
 to `start` to be passed along to native gRPC Server's [`bind`](http://www.grpc.io/grpc/node/module-src_server-Server.html) method.
 
 
-A server can be started on OS-assigned ephemeral port by ommiting the hostname parameter completely or by setting the "port" part of the hostname to `0`. All following examples will start a service on an OS-assigned port.
+A server can be started on OS-assigned dynamic port by ommiting the hostname parameter completely or by setting the "port" part of the hostname to `0`. All following examples will start a service on an OS-assigned port.
 
 ```
 app.start()
