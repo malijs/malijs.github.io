@@ -139,7 +139,7 @@ async function sayHello (ctx) {
 function main () {
   const app = new Mali(PROTO_PATH)
   app.use({ sayHello })
-  app.start('0.0.0.0:50051')
+  app.start('127.0.0.1:50051')
 }
 ```
 
@@ -148,12 +148,28 @@ The same application representation can be started on multiple ports if desired.
 ```js
 const app = new Mali(PROTO_PATH)
 app.use({ sayHello })
-const server1 = app.start('0.0.0.0:50051')
-const server2 = app.start('0.0.0.0:50052')
+const server1 = app.start('127.0.0.1:50051')
+const server2 = app.start('127.0.0.1:50052')
 ```
 
 We can pass [server credential options](http://www.grpc.io/grpc/node/global.html#ServerCredentials)
 to `start` to be passed along to native gRPC Server's [`bind`](http://www.grpc.io/grpc/node/module-src_server-Server.html) method.
+
+
+A server can be started on OS-assigned ephemeral port by ommiting the hostname parameter completely or by setting the "port" part of the hostname to `0`. All following examples will start a service on an OS-assigned port.
+
+```
+app.start()
+app.start('')
+app.start(grpc.ServerCredentials.createInsecure())
+app.start('127.0.0.1:0')
+```
+
+The application ports can be be retreived using the `ports()` function:
+
+```
+console.log(app.ports()) // [ 50051 ]
+```
 
 ### Close
 
@@ -163,7 +179,7 @@ a promise fulfilled when all started servers are shutdown.
 ```js
 const app = new Mali(PROTO_PATH)
 app.use({ sayHello })
-const server = app.start('0.0.0.0:50051')
+const server = app.start('127.0.0.1:50051')
 app.close().then(() => console.log('server(s) shut down.'))
 ```
 

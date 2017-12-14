@@ -24,7 +24,7 @@ async function logger (ctx, next) {
 
 const app = new Mali(PROTO_PATH)
 app.use({ sayHello })
-const server1 = app.start('0.0.0.0:50051')
+const server1 = app.start('127.0.0.1:50051')
 ```
 
 A call to the `sayHello` remote function will result in the following log output:

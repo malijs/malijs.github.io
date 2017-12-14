@@ -26,17 +26,18 @@ Represents a gRPC service
 **Extends**: <code>Emitter</code>  
 
 * [Mali](#Mali) ⇐ <code>Emitter</code>
-* [new Mali(proto, name, options)](#new_Mali_new)
-* [.silent](#Malisilent) : <code>Boolean</code>
-* [.name](#Maliname) : <code>String</code>
-* [.env](#Malienv) : <code>String</code>
-* [.init(proto, name, options)](#Maliinit)
-* [.use(service, name, ...fns)](#Maliuse)
-* [.onerror(err)](#Malionerror)
-* [.start(port, creds)](#Malistart) ⇒ <code>Object</code>
-* [.close()](#Maliclose)
-* [.toJSON()](#MalitoJSON) ⇒ <code>Object</code>
-* [.inspect()](#Maliinspect) ⇒ <code>Object</code>
+    * [new Mali(proto, name, options)](#new_Mali_new)
+    * [.silent](#Malisilent) : <code>Boolean</code>
+    * [.name](#Maliname) : <code>String</code>
+    * [.env](#Malienv) : <code>String</code>
+    * [.ports](#Maliports) : <code>Array</code>
+    * [.init(proto, name, options)](#Maliinit)
+    * [.use(service, name, ...fns)](#Maliuse)
+    * [.onerror(err)](#Malionerror)
+    * [.start(port, creds)](#Malistart) ⇒ <code>Object</code>
+    * [.close()](#Maliclose)
+    * [.toJSON()](#MalitoJSON) ⇒ <code>Object</code>
+    * [.inspect()](#Maliinspect) ⇒ <code>Object</code>
 
 <a name="new_mali_new" id="new_mali_new" data-id="new_mali_new"></a>
 
@@ -92,6 +93,18 @@ The environment. Taken from <code>process.end.NODE_ENV</code>. Default: <code>de
 
 ```js
 console.log(app.env) // 'development'
+```
+
+<a name="maliports" id="maliports" data-id="maliports"></a>
+
+#### mali.ports : <code>Array</code>
+The ports of the started service(s)
+
+**Kind**: instance property of [<code>Mali</code>](#Mali)  
+**Example**  
+
+```js
+console.log(app.ports) // [ 52239 ]
 ```
 
 <a name="maliinit" id="maliinit" data-id="maliinit"></a>
@@ -204,15 +217,22 @@ Start the service. All middleware and handlers have to be set up prior to callin
 **Kind**: instance method of [<code>Mali</code>](#Mali)  
 **Returns**: <code>Object</code> - server - The <code>grpc.Server</code> instance  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| port | <code>String</code> |  | The hostport for the service |
-| creds | <code>Object</code> | <code></code> | Credentials options. Default: <code>grpc.ServerCredentials.createInsecure()</code> |
+| Param | Type | Description |
+| --- | --- | --- |
+| port | <code>String</code> | The hostport for the service. Default: <code>127.0.0.1:0</code> |
+| creds | <code>Object</code> | Credentials options. Default: <code>grpc.ServerCredentials.createInsecure()</code> |
 
 **Example**  
 
 ```js
 app.start('localhost:50051')
+```
+
+**Example** *(Start same app on multiple ports)*  
+
+```js
+app.start('127.0.0.1:50050')
+app.start('127.0.0.1:50051')
 ```
 
 <a name="maliclose" id="maliclose" data-id="maliclose"></a>
@@ -250,23 +270,23 @@ Represents the application and call context. Clients to not create this. Mali do
 **Summary**: Represents a Mali call context  
 
 * [Context](#Context)
-* [.name](#Contextname) : <code>String</code>
-* [.fullName](#ContextfullName) : <code>String</code>
-* [.service](#Contextservice) : <code>String</code>
-* [.package](#Contextpackage) : <code>String</code>
-* [.app](#Contextapp) : <code>Object</code>
-* [.call](#Contextcall) : <code>Object</code>
-* [.request](#Contextrequest) : <code>Object</code>
-* [.response](#Contextresponse) : <code>Object</code>
-* [.req](#Contextreq) : <code>Object</code> \| <code>Stream</code>
-* [.type](#Contexttype) : <code>String</code>
-* [.metadata](#Contextmetadata) : <code>String</code>
-* [.get](#Contextget) ⇒ <code>\*</code>
-* [.res](#Contextres) : <code>Object</code> \| <code>Stream</code>
-* [.set](#Contextset) : <code>function</code>
-* [.sendMetadata](#ContextsendMetadata) : <code>function</code>
-* [.getStatus](#ContextgetStatus) ⇒ <code>\*</code>
-* [.setStatus](#ContextsetStatus) : <code>function</code>
+    * [.name](#Contextname) : <code>String</code>
+    * [.fullName](#ContextfullName) : <code>String</code>
+    * [.service](#Contextservice) : <code>String</code>
+    * [.package](#Contextpackage) : <code>String</code>
+    * [.app](#Contextapp) : <code>Object</code>
+    * [.call](#Contextcall) : <code>Object</code>
+    * [.request](#Contextrequest) : <code>Object</code>
+    * [.response](#Contextresponse) : <code>Object</code>
+    * [.req](#Contextreq) : <code>Object</code> \| <code>Stream</code>
+    * [.type](#Contexttype) : <code>String</code>
+    * [.metadata](#Contextmetadata) : <code>String</code>
+    * [.get](#Contextget) ⇒ <code>\*</code>
+    * [.res](#Contextres) : <code>Object</code> \| <code>Stream</code>
+    * [.set](#Contextset) : <code>function</code>
+    * [.sendMetadata](#ContextsendMetadata) : <code>function</code>
+    * [.getStatus](#ContextgetStatus) ⇒ <code>\*</code>
+    * [.setStatus](#ContextsetStatus) : <code>function</code>
 
 <a name="contextname" id="contextname" data-id="contextname"></a>
 
@@ -526,13 +546,13 @@ Clients to not create this. Mali does it for us.
 **Kind**: global class  
 
 * [Request](#Request)
-* [new Request(call, type)](#new_Request_new)
-* [.call](#Requestcall) : <code>Object</code>
-* [.req](#Requestreq) : <code>Object</code> \| <code>Stream</code>
-* [.metadata](#Requestmetadata) : <code>Object</code>
-* [.type](#Requesttype) : <code>String</code>
-* [.getMetadata()](#RequestgetMetadata) ⇒ <code>Object</code>
-* [.get(field)](#Requestget) ⇒ <code>\*</code>
+    * [new Request(call, type)](#new_Request_new)
+    * [.call](#Requestcall) : <code>Object</code>
+    * [.req](#Requestreq) : <code>Object</code> \| <code>Stream</code>
+    * [.metadata](#Requestmetadata) : <code>Object</code>
+    * [.type](#Requesttype) : <code>String</code>
+    * [.getMetadata()](#RequestgetMetadata) ⇒ <code>Object</code>
+    * [.get(field)](#Requestget) ⇒ <code>\*</code>
 
 <a name="new_request_new" id="new_request_new" data-id="new_request_new"></a>
 
@@ -630,19 +650,19 @@ Clients to not create this. Mali does it for us.
 **Kind**: global class  
 
 * [Response](#Response)
-* [new Response(call, type)](#new_Response_new)
-* [.call](#Responsecall) : <code>Object</code>
-* [.type](#Responsetype) : <code>String</code>
-* [.metadata](#Responsemetadata) : <code>Object</code>
-* [.status](#Responsestatus) : <code>Object</code>
-* [.res](#Responseres) : <code>Object</code> \| <code>Stream</code>
-* [.set(field, val)](#Responseset)
-* [.get(field)](#Responseget) ⇒ <code>\*</code>
-* [.getMetadata()](#ResponsegetMetadata) ⇒ <code>Object</code>
-* [.sendMetadata(md)](#ResponsesendMetadata)
-* [.getStatus(field)](#ResponsegetStatus) ⇒ <code>\*</code>
-* [.setStatus(field, val)](#ResponsesetStatus)
-* [.getStatusMetadata()](#ResponsegetStatusMetadata) ⇒ <code>Object</code>
+    * [new Response(call, type)](#new_Response_new)
+    * [.call](#Responsecall) : <code>Object</code>
+    * [.type](#Responsetype) : <code>String</code>
+    * [.metadata](#Responsemetadata) : <code>Object</code>
+    * [.status](#Responsestatus) : <code>Object</code>
+    * [.res](#Responseres) : <code>Object</code> \| <code>Stream</code>
+    * [.set(field, val)](#Responseset)
+    * [.get(field)](#Responseget) ⇒ <code>\*</code>
+    * [.getMetadata()](#ResponsegetMetadata) ⇒ <code>Object</code>
+    * [.sendMetadata(md)](#ResponsesendMetadata)
+    * [.getStatus(field)](#ResponsegetStatus) ⇒ <code>\*</code>
+    * [.setStatus(field, val)](#ResponsesetStatus)
+    * [.getStatusMetadata()](#ResponsegetStatusMetadata) ⇒ <code>Object</code>
 
 <a name="new_response_new" id="new_response_new" data-id="new_response_new"></a>
 
@@ -853,5 +873,5 @@ ctx.response.setStatus({
 Gets the response status / trailer metadata as a `grpc.Metadata` object instance
 
 **Kind**: instance method of [<code>Response</code>](#Response)  
-**Returns**: <code>Object</code> - response status / trailer metadata  
+**Returns**: <code>Object</code> - response status / trailer metadata    
 
