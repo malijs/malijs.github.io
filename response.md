@@ -14,7 +14,7 @@ async function sayHello(ctx) {
   console.log(ctx.response.type) // 'unary'
 
   // set some value to the response trailer / status metatada
-  ctx.response.set('biz', 'baz')
+  ctx.response.setStatus('biz', 'baz')
 
   // set the actual payload
   ctx.response.res = { message: `Hello ${ctx.req.name}!` }
