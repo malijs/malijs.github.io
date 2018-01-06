@@ -16,6 +16,7 @@ A collection of useful links for developing with Mali.
 * [Node.js Proto Files](https://github.com/googleapis/nodejs-proto-files) - All of the Google API's protocol buffer files
 * [grpc-contrb](https://github.com/grpc/grpc-contrib) - gRPC ecosystem that complements gRPC core
 * [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) - gRPC to JSON proxy generator
+* [node-grpc-boilerplate](https://github.com/iraycd/node-grpc-boilerplate) - Boilerplate for Node Mali GRPC, Used for production with jest for testing and code coverage
 
 ### Promises
 
