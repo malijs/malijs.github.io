@@ -52,7 +52,7 @@ Some additional documentation on error handling: https://grpc.io/docs/guides/err
 ### Comminicating Errors
 
 This section will cover different ways for communicating errors from server to client.
-We will compare traditional gRPC implementations and Mali version.
+We will compare traditional gRPC implementations and Mali version. The corresponding code and this overview can be found in the [examples repository](https://github.com/malijs/examples).
 
 #### Service Definition
 
