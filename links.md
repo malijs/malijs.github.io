@@ -8,6 +8,7 @@ A collection of useful links for developing with Mali.
 * [grpc-create-metadata](https://github.com/bojand/grpc-create-metadata) - Helper utility for creating gRPC `Metadata`
 * [grpc-create-error](https://github.com/bojand/grpc-create-error) - Utility function for creating `Errors` for gRPC responses
 * [grpc-error](https://github.com/bojand/grpc-error) - `GRPCError` class that wraps `grpc-create-error`
+* [grpc-errors](https://github.com/ortoo/grpc-errors) - A quick and easy way of generating errors for use with grpc
 * [grpc-inspect](https://github.com/bojand/grpc-inspect) - gRPC protocol buffer inspection utility
 * [Node.js gRPC status codes](https://grpc.io/grpc/node/grpc.html) - The Node.js grpc status codes
 * [gRPC status codes](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md) - Status codes and their use in gRPC
