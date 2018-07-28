@@ -216,6 +216,7 @@ Default error handler.
 
 #### mali.start(port, creds, options) ⇒ <code>Object</code>
 Start the service. All middleware and handlers have to be set up prior to calling <code>start</code>.
+Throws in case we fail to bind to the given port.
 
 **Kind**: instance method of [<code>Mali</code>](#Mali)  
 **Returns**: <code>Object</code> - server - The <code>grpc.Server</code> instance  
@@ -877,4 +878,4 @@ ctx.response.setStatus({
 Gets the response status / trailer metadata as a `grpc.Metadata` object instance
 
 **Kind**: instance method of [<code>Response</code>](#Response)  
-**Returns**: <code>Object</code> - response status / trailer metadata
+**Returns**: <code>Object</code> - response status / trailer metadata  
