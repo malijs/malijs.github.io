@@ -1,7 +1,5 @@
 # Request
 
-### Overview
-
 Mali Request class encasulates the request of a call. Clients to not create this. Mali does it for us. It is accessible via the context `request` property. Some `ctx` properties and methods are just delegated to the `request` object.
 
 ### Example
@@ -19,13 +17,13 @@ async function sayHello(ctx) {
 }
 ```
 
-### Properties
+## Properties
 
-#### request.call
+### request.call
 
 The internal gRPC call instance reference.
 
-#### request.req
+### request.req
 
 The actuall call request object.
 In case of `UNIRY` and `RESPONSE_STREAM` calls it is simply the gRPC `call`'s `request`. 
@@ -35,7 +33,7 @@ In case of `REQUEST_STREAM` and `DUPLEX` calls it's the gRPC `call` reference it
 console.log(ctx.request.req) // { name: 'Bob' }
 ```
 
-#### request.metadata
+### request.metadata
 
 The call's request metadata plain object.
 
@@ -44,7 +42,7 @@ console.log(ctx.request.metadata)
 // { 'user-agent': 'grpc-node/1.7.1 grpc-c/1.7.1 (osx; chttp2)' }
 ```
 
-#### request.type
+### request.type
 
 The call type. One of [`CallType`](https://mali.github.io/mali-call-types) enums.
 
@@ -52,9 +50,9 @@ The call type. One of [`CallType`](https://mali.github.io/mali-call-types) enums
 console.log(ctx.request.type) // 'unary'
 ```
 
-### Functions
+## Functions
 
-#### request.get()
+### request.get()
 
 Get a request metadata value.
 
@@ -62,6 +60,6 @@ Get a request metadata value.
 console.log(ctx.request.get('foo')) // 'bar'
 ```
 
-#### request.getMetadata()
+### request.getMetadata()
 
 Get request metadata as a `grpc.Metadata` object.

@@ -1,12 +1,10 @@
 # Handling requests
 
-### Overview
-
 Handler functions are just functions that either set the `ctx.res` property,
 or actually write to the response in case of a `DUPLEX` call. Typically these
 functions do not return anything, and we ignore their return values.
 
-#### UNARY
+## UNARY
 
 Unary calls are the simplest. They are simple request and response remote procedure
 calls. The client calls the remote method with certain request message and the service
@@ -32,7 +30,7 @@ async function getUser(ctx) {
 app.use({ getUser })
 ```
 
-#### RESPONSE STREAM
+## RESPONSE STREAM
 
 Another type of call is where clients call a remote with a request message and
 expect a stream in response that emits the message values. This is typically useful
@@ -71,7 +69,7 @@ app.use('sayHellos', function sayHellos (ctx) {
 
 Another useful module for working with streams is [Highland.js](http://highlandjs.org).
 
-#### REQUEST STREAM
+## REQUEST STREAM
 
 Similarly with a `REQEUST STREAM` call a client calls the remote with a stream of
 input message values and expects a single response based on the inputs.
@@ -111,7 +109,7 @@ app.use('writeHellos', async function writeHellos (ctx) {
 Note that since this is an asynchronous operation we (a)wait for a fulfilment of `Promise` once
 we're done with all the values emitted from the input stream.
 
-#### DUPLEX
+## DUPLEX
 
 Finally, in case of `DUPLEX` call, the `ctx.req`, and `ctx.res` properties just
 reference the gRPC `call` duplex stream. We implement this the same as we would

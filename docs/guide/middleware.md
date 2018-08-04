@@ -1,7 +1,5 @@
 # Middleware
 
-### Overview
-
 Creating and using Mali middleware is accomplished in the same mechanisms
 as [Koa](http://koajs.com/) middleware, just taking into account the changes to
 the application context. Mali middleware allows for flow both "downstream",
@@ -33,12 +31,12 @@ A call to the `sayHello` remote function will result in the following log output
 SayHello [unary] - 1 ms
 ```
 
-### Middleware Best Practices
+## Middleware Best Practices
 
 This section covers middleware authoring best practices, such as middleware
 accepting options, named middleware for debugging, among others.
 
-#### Middleware options
+### Middleware options
 
 When creating public middleware it's useful to conform to the convention of
 wrapping the middleware in a function that accepts options, allowing users to
@@ -67,7 +65,7 @@ app.use(logger())
 app.use(logger(':name | :type'))
 ```
 
-#### Named middleware
+### Named middleware
 
 Naming middleware is optional, however it's useful for debugging purposes to assign a name.
 
@@ -79,7 +77,7 @@ function loggerMiddleware (format) {
 }
 ```
 
-#### Response Middleware
+### Response Middleware
 
 Middleware that decide to respond to a request and wish to bypass downstream middleware may
 simply omit `next()`. Typically this will be in routing middleware, but this can be performed by
@@ -137,7 +135,7 @@ app.use('sayHello', fn1, fn2, fn3)
 When the furthest downstream middleware executes `next()`, it's really yielding to a noop
 function, allowing the middleware to compose correctly anywhere in the stack.
 
-### Async operations
+## Async operations
 
 Async function and promise forms Mali's foundation, allowing you to write non-blocking sequential code.
 For example this middleware reads the filenames from `./docs`, and then reads the contents
@@ -155,7 +153,7 @@ app.use(async function (ctx, next) {
 })
 ```
 
-### Common Middleware
+## Common Middleware
 
 | Name | Description |
 |---|---|

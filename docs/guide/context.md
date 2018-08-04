@@ -1,7 +1,5 @@
 # Context
 
-### Overview
-
 Every middleware or call handler is passed an application context. A Mali Context
 encapsulates the Mali Request and Response objects into a single object which
 provides a few helpful properties and methods for inspecting and handling gRPC remote calls.
@@ -27,11 +25,11 @@ async function sayHello(ctx) {
 }
 ```
 
-### Properties
+## Properties
 
 Context specific properties. Some of these are just aliases and deleagated to the appropriate request or response properties.
 
-#### ctx.name
+### ctx.name
 
 The call name as defined within the protocol buffer definition.
 
@@ -39,7 +37,7 @@ The call name as defined within the protocol buffer definition.
 console.log(ctx.name) // 'SayHello'
 ```
 
-#### ctx.fullName
+### ctx.fullName
 
 The full call name as defined within the protocol buffer definition, including the package and service name.
 
@@ -47,7 +45,7 @@ The full call name as defined within the protocol buffer definition, including t
 console.log(ctx.fullName) // '/helloworld.Greeter/SayHello'
 ```
 
-#### ctx.service
+### ctx.service
 
 The service name of the call.
 
@@ -55,7 +53,7 @@ The service name of the call.
 console.log(ctx.service) // 'Greeter'
 ```
 
-#### ctx.package
+### ctx.package
 
 The package name of the call.
 
@@ -63,11 +61,11 @@ The package name of the call.
 console.log(ctx.package) // 'helloworld'
 ```
 
-#### ctx.app
+### ctx.app
 
 The Mali application instance reference.
 
-#### ctx.type
+### ctx.type
 
 The call type. One of [`CallType`](https://mali.github.io/mali-call-types) enums.
 This is an alias for `ctx.request.type`.
@@ -76,19 +74,19 @@ This is an alias for `ctx.request.type`.
 console.log(ctx.type) // 'unary'
 ```
 
-#### ctx.call
+### ctx.call
 
 The internal gRPC call instance reference. This is an alias for `ctx.request.call`.
 
-#### ctx.request
+### ctx.request
 
 The Mali Request object.
 
-#### ctx.response
+### ctx.response
 
 The Mali Response object.
 
-#### ctx.req
+### ctx.req
 
 The request object. This is alias for `ctx.request.req`.
 In case of `UNIRY` and `RESPONSE_STREAM` calls it is simply the gRPC `call`'s `request`. 
@@ -98,7 +96,7 @@ In case of `REQUEST_STREAM` and `DUPLEX` calls it's the gRPC `call` reference it
 console.log(ctx.req) // { name: 'Bob' }
 ```
 
-#### ctx.res
+### ctx.res
 
 The response object. This is an alias to `ctx.response.res`.
 This is set only in case of `DUPLEX` calls, to the the gRPC `call` reference itself.
@@ -109,7 +107,7 @@ When a stream it is automatically [piped](https://nodejs.org/api/stream.html#str
 ctx.res = { message: 'Hello World!' }
 ```
 
-#### ctx.metadata
+### ctx.metadata
 
 The call's request metadata plain object. This is an alias to `ctx.request.metadata`.
 
@@ -118,9 +116,9 @@ console.log(ctx.metadata)
 // { 'user-agent': 'grpc-node/1.7.1 grpc-c/1.7.1 (osx; chttp2)' }
 ```
 
-### Functions
+## Functions
 
-#### ctx.get()
+### ctx.get()
 
 Get request metadata value. This is an alias to `ctx.request.get()`.
 
@@ -129,7 +127,7 @@ console.log(ctx.get('user-agent'))
 // 'grpc-node/1.7.1 grpc-c/1.7.1 (osx; chttp2)'
 ```
 
-#### ctx.set()
+### ctx.set()
 
 Set a response header metadata value. This is an alias to `ctx.response.set()`.
 
@@ -145,7 +143,7 @@ ctx.set({
 })
 ```
 
-#### ctx.sendMetadata()
+### ctx.sendMetadata()
 
 Send response header metadata. Optionally provide header metadata object directly as an argument and that is set and sent. If param is not provided `sendMetadata` sends the existing metadata in the response. If it is provided existin metadata is cleared and is set to the object adn then sent. This is an alias to `ctx.response.sendMetadata()`.
 
@@ -155,7 +153,7 @@ ctx.sendMetadata({
 })
 ```
 
-#### ctx.setStatus()
+### ctx.setStatus()
 
 Set response status / trailer metadata value. This is an alias to `ctx.response.setStatus()`.
 
@@ -171,7 +169,7 @@ ctx.setStatus({
 })
 ```
 
-#### ctx.getStatus()
+### ctx.getStatus()
 
 Get response status / trailer metadata value. This is an alias to `ctx.response.getStatus()`.
 

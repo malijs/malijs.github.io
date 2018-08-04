@@ -1,12 +1,12 @@
 # Getting Started
 
-### Installation
+## Installation
 
 ```sh
 $ npm install mali
 ```
 
-### Sample proto
+## Sample proto
 
 ```protobuf
 syntax = "proto3";
@@ -26,13 +26,13 @@ message HelloReply {
 }
 ```
 
-### Creating an application
+## Creating an application
 
 Similar to `grpc.Server`, Mali application can be created dynamically either by
 loading a `.proto` definition file, or by loading the static `protoc` generated
 Node.js code.
 
-#### Dynamic
+### Dynamic
 
 When dynamically creating an application from static `.proto` file include the
 path to the `proto` file and the name of the service within the definition.
@@ -45,7 +45,7 @@ const PROTO_PATH = path.resolve(__dirname, '../protos/helloworld.proto')
 const app = new Mali(PROTO_PATH, 'Greeter')
 ```
 
-#### Static
+### Static
 
 When creating from statically generated Node.js code, we need the implementation
 and the name of the service constrcutor.
@@ -55,7 +55,7 @@ const services = require('./static/helloworld_grpc_pb')
 const app = new Mali(services, 'GreeterService')
 ```
 
-### Handling request
+## Handling request
 
 We need to define a handler for the RPC call and set it using the `use()` method.
 We can pass an object specifying our handlers.
@@ -89,7 +89,7 @@ app.use('sayHello', hello)
 app.use('sayHi', hi)
 ```
 
-### Starting the service
+## Starting the service
 
 Just use the `start` method and passing the port. The method returns a
 `grpc.Server` instance.
@@ -111,7 +111,7 @@ function main () {
 }
 ```
 
-### Stopping the service
+## Stopping the service
 To stop and close the service use the asynchronous method `close()`.
 
 ```js

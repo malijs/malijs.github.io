@@ -1,7 +1,5 @@
 # Error Handling
 
-### Overview
-
 By default Mali outputs all errors to stderr unless `app.silent` is set to `true`.
 To perform custom error-handling logic such as centralized logging you can add an
 `'error'` event listener:
@@ -24,7 +22,7 @@ When an error occurs we try to send it to the caller either via the response in 
 of `UNARY` or `REQUEST_STREAM` calls or if appropriate via `Stream.emit()` in case
 of `RESPONSE_STREAM` and `DUPLEX` calls.
 
-### Custom errors
+## Custom errors
 
 In addition to standard message field, gRPC Errors can also have an integer
 [status code](https://github.com/grpc/grpc/blob/master/doc/statuscodes.md) and
@@ -49,12 +47,12 @@ Since this would be pretty common, there are a couple of utility modules:
 
 Some additional documentation on error handling: https://grpc.io/docs/guides/error.html
 
-### Comminicating Errors
+## Comminicating Errors
 
 This section will cover different ways for communicating errors from server to client.
 We will compare traditional gRPC implementations and Mali version. The corresponding code and this overview can be found in the [examples repository](https://github.com/malijs/examples).
 
-#### Service Definition
+### Service Definition
 
 ```protobuf
 syntax = "proto3";
@@ -89,7 +87,7 @@ message WidgetResult {
 }
 ```
 
-#### UNARY
+### UNARY
 
 With gRPC with use the callback in our handler to response with an error to the client.
 
@@ -142,7 +140,7 @@ async function getWidget (ctx) {
 }
 ```
 
-#### REQUEST STREAM
+### REQUEST STREAM
 
 Similarly with request stream in gRPC server implementation we use the callback to respond either with a response or an error:
 
@@ -200,7 +198,7 @@ async function createWidgets (ctx) {
 
 Alternatively, similar to `UNARY` calls, we can resolve with an error to explicitly return an error and circumvent the error logging within the application.
 
-#### RESPONSE STREAM
+### RESPONSE STREAM
 
 With response stream calls we can `emit` an error to the response stream. However this would cause a stop to the request. Sometimes this is not desireble if we can detect and control errorous conditions and want to contirnue streaming. In such scenarios we need to setup are responses to include error data. Reviewing our call definition:
 
@@ -293,7 +291,7 @@ async function listWidgets (ctx) {
 }
 ```
 
-#### DUPLEX
+### DUPLEX
 
 We can take the same approach with duplex streams.
 

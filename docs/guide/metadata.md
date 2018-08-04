@@ -1,10 +1,12 @@
-# Metadata
+---
+title: Metadata
+---
 
-### Overview
+# Metadata
 
 Information about a particular gRPC call is can be sent using [metadata](https://grpc.io/docs/guides/concepts.html#metadata) in the form of a list of key-value pairs, where the keys are strings and the values are typically strings (but can be binary data). Call calls received in serverces will have a metadata object that was sent by the client. When responding to a call invocation the server can send header metadata, as well additionally status metadata upon completion of the request. Mali adds facilities for working with metadata on top of the core gRPC module.
 
-### Receiving
+## Receiving
 
 When a request comes into a gRPC call handler, metadata can be accessed via both `context` and `request` properties.
 
@@ -25,9 +27,9 @@ async function sayHello (ctx) {
 }
 ```
 
-### Setting and sending
+## Setting and sending
 
-#### Header
+### Header
 
 Header metadata can be set using `set` function within the `context` or `response` objects.
 
@@ -67,7 +69,7 @@ call.on('metadata', md => {
 })
 ```
 
-#### Status / Trailer metadata
+### Status / Trailer metadata
 
 Similarly we can set the status / trailer metadata using `setStatus` functions of the `context` and `request` objects. `setStatus` can take key and value or object parameters. Mali sends this metadata automatically for us at the end of the response. Trailer metadata can be sent only once.
 

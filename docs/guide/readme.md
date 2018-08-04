@@ -1,4 +1,4 @@
-# Mali
+# Introduction
 
 > Minimalistic Node.js gRPC microservice framework
 
@@ -76,9 +76,3 @@ function main () {
 
 main()
 ```
-
-## Next steps
-
-* Read the [guide](/getting_started)
-* Explore the [examples](/examples)
-* Check out the [source code](https://github.com/malijs/mali)

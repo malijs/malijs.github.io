@@ -1,7 +1,5 @@
 # Response
 
-### Overview
-
 Mali Response class encasulates the response of a call. Clients to not create this. Mali does it for us. It is accessible via the context `response` property. Some `ctx` properties and methods are just delegated to the `response` object. It allows us to sent the response payload, alongside any header and trailer metadata.
 
 ### Example
@@ -21,13 +19,13 @@ async function sayHello(ctx) {
 }
 ```
 
-### Properties
+## Properties
 
-#### response.call
+### response.call
 
 The internal gRPC call instance reference.
 
-#### response.type
+### response.type
 
 The call type. One of [`CallType`](https://mali.github.io/mali-call-types) enums.
 
@@ -35,7 +33,7 @@ The call type. One of [`CallType`](https://mali.github.io/mali-call-types) enums
 console.log(ctx.response.type) // 'unary'
 ```
 
-#### response.metadata
+### response.metadata
 
 The call's response header metadata plain object.
 
@@ -44,7 +42,7 @@ ctx.response.set('foo', 'bar')
 console.log(ctx.response.metadata)  // { 'foo': 'bar' }
 ```
 
-#### response.status
+### response.status
 
 The call's response status / trailer metadata plain object.
 
@@ -53,7 +51,7 @@ ctx.response.setStatus('biz', 'baz')
 console.log(ctx.response.status)  // { biz: 'baz' }
 ```
 
-#### response.res
+### response.res
 
 The actual call response payload object.
 This is set only in case of `DUPLEX` calls, to the the gRPC `call` reference itself.
@@ -76,9 +74,9 @@ Since in `DUPLEX` calls `res` is just the `call` instance itself, we can use it 
 ctx.response.res.write({ foo: 'bar' })
 ```
 
-### Functions
+## Functions
 
-#### response.get()
+### response.get()
 
 Get a response header metadata value.
 
@@ -86,7 +84,7 @@ Get a response header metadata value.
 console.log(ctx.response.get('foo')) // 'bar'
 ```
 
-#### response.set()
+### response.set()
 
 Set a response header metadata value.
 
@@ -102,11 +100,11 @@ ctx.response.set({
 })
 ```
 
-#### response.getMetadata()
+### response.getMetadata()
 
 Get response header metadata as a `grpc.Metadata` object.
 
-#### response.sendMetadata()
+### response.sendMetadata()
 
 Send response header metadata. Optionally provide header metadata object directly as an argument and that is set and sent. If param is not provided `sendMetadata` sends the existing metadata in the response. If it is provided existin metadata is cleared and is set to the object adn then sent.
 
@@ -116,7 +114,7 @@ ctx.response.sendMetadata({
 })
 ```
 
-#### reponse.setStatus()
+### reponse.setStatus()
 
 Set a reponse status / trailer metadata value.
 
@@ -132,7 +130,7 @@ ctx.response.setStatus({
 })
 ```
 
-#### reponse.getStatus()
+### reponse.getStatus()
 
 Get a reponse status / trailer metadata value.
 
@@ -140,6 +138,6 @@ Get a reponse status / trailer metadata value.
 console.log(ctx.response.getStatus('foo')) // 'bar'
 ```
 
-#### reponse.getStatusMetadata()
+### reponse.getStatusMetadata()
 
 Get reponse status / trailer metadata as a `grpc.Metadata` object.

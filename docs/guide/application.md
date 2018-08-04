@@ -1,6 +1,6 @@
 # Application
 
-### Variables
+## Variables
 
 There are a few preset application variables.
 
@@ -17,13 +17,13 @@ app.config = fs.readFileSync(CONFIG_FILE)
 
 Although a more appropriate place may be the application's context. See below.
 
-### Create
+## Create
 
 Similar to `grpc.Server`, Mali application can be created dynamically either by
 loading a `.proto` definition file, or by loading the static `protoc` generated
 Node.js code.
 
-#### Dynamic
+### Dynamic
 
 When dynamically creating an application from static `.proto` file include the
 path to the `proto` file.
@@ -47,7 +47,7 @@ const PROTO_PATH = path.resolve(__dirname, '../protos/helloworld.proto')
 const app = new Mali(PROTO_PATH, 'Greeter')
 ```
 
-#### Static
+### Static
 
 Similarly we can use statically generated Node.js code
 
@@ -64,7 +64,7 @@ const services = require('./static/helloworld_grpc_pb')
 const app = new Mali(services, 'GreeterService')
 ```
 
-### Middleware
+## Middleware
 
 `app.use(service, name, ...fns)` is used to add the given middleware or handler function to the application.
 
@@ -117,7 +117,7 @@ app.use({
 
 See [Middleware](http://mali.github.io/middleware) for more information.
 
-### Start
+## Start
 
 Application can be started using the `start` method and passing the port. The method returns a
 `grpc.Server` instance. It's just sugar for creating the native gRPC Server; calling
@@ -171,7 +171,7 @@ The application ports can be be retreived using the `ports()` function:
 console.log(app.ports()) // [ 50051 ]
 ```
 
-### Close
+## Close
 
 To shutdown all started servers just call `app.close()` method. The method returns
 a promise fulfilled when all started servers are shutdown.
@@ -183,7 +183,7 @@ const server = app.start('127.0.0.1:50051')
 app.close().then(() => console.log('server(s) shut down.'))
 ```
 
-### Context
+## Context
 
 All middleware and handlers are passed a context. This is the recommended namespace
 to extend with information that's useful throughout the lifetime of your application,

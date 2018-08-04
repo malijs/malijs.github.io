@@ -1,8 +1,12 @@
+---
+sidebar: auto
+---
+
 # Links
 
 A collection of useful links for developing with Mali.
 
-### gRPC
+## gRPC
 
 * [grpc-caller](https://github.com/bojand/grpc-caller) - An improved Node.js gRPC client
 * [grpc-create-metadata](https://github.com/bojand/grpc-create-metadata) - Helper utility for creating gRPC `Metadata`
@@ -19,11 +23,11 @@ A collection of useful links for developing with Mali.
 * [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) - gRPC to JSON proxy generator
 * [node-grpc-boilerplate](https://github.com/iraycd/node-grpc-boilerplate) - Boilerplate for Node Mali GRPC, Used for production with jest for testing and code coverage
 
-### Promises
+## Promises
 
 * [Awesome promise utilities](https://github.com/wbinnssmith/awesome-promises#convenience-utilities) - a list of good promise convenience utilities
 
-### Stream
+## Stream
 
 * [Highland](http://highlandjs.org) - Highland.js stream utility
 * [mississippi](https://github.com/maxogden/mississippi) - A collection of useful stream utility modules
