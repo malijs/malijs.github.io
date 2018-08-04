@@ -19,6 +19,7 @@ module.exports = {
         text: 'Links',
         link: '/links/'
       },
+      { text: 'Chat', link: 'https://gitter.im/malijs/Lobby' },
       { text: 'GitHub', link: 'https://github.com/malijs/mali' }
     ],
     sidebar: {

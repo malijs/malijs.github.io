@@ -158,7 +158,7 @@ to `start` to be passed along to native gRPC Server's [`bind`](http://www.grpc.i
 
 A server can be started on OS-assigned dynamic port by ommiting the hostname parameter completely or by setting the "port" part of the hostname to `0`. All following examples will start a service on an OS-assigned port.
 
-```
+```js
 app.start()
 app.start('')
 app.start(grpc.ServerCredentials.createInsecure())
@@ -167,7 +167,7 @@ app.start('127.0.0.1:0')
 
 The application ports can be be retreived using the `ports()` function:
 
-```
+```js
 console.log(app.ports()) // [ 50051 ]
 ```
 
