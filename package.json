@@ -1,0 +1,23 @@
+{
+  "name": "malijs.github.io",
+  "version": "1.0.0",
+  "description": "> Minimalistic Node.js gRPC microservice framework",
+  "main": "",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malijs/malijs.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malijs/malijs.github.io/issues"
+  },
+  "homepage": "https://github.com/malijs/malijs.github.io#readme",
+  "devDependencies": {
+    "vuepress": "^0.13.1"
+  }
+}
