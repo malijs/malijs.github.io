@@ -12,7 +12,7 @@ module.exports = {
         link: '/api/'
       },
       {
-        text: 'Exmaples',
+        text: 'Examples',
         link: '/examples/'
       },
       {
