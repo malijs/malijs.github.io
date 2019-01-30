@@ -21,7 +21,7 @@ Clients to not create this. Mali does it for us.</p>
 
 <a name="Mali"></a>
 
-## Mali ⇐ <code>Emitter</code>
+## Mali
 Represents a gRPC service
 
 **Kind**: global class  

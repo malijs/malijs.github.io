@@ -43,14 +43,10 @@ module.exports = {
       ],
       '/api/': [
         {
-          title: 'API Reference',
+          // title: 'API Reference',
           collapsable: false,
           children: [
-            ['#classes', 'Classes'],
-            ['#mali-⇐-emitter', 'Mali'],
-            ['#context', 'Context'],
-            ['#request', 'Request'],
-            ['#response', 'Response']
+            ''
           ]
         }
       ]
