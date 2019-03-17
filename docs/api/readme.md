@@ -1,5 +1,3 @@
-# API Reference
-
 ## Classes
 
 <dl>
@@ -21,7 +19,7 @@ Clients to not create this. Mali does it for us.</p>
 
 <a name="Mali"></a>
 
-## Mali
+## Mali ⇐ <code>Emitter</code>
 Represents a gRPC service
 
 **Kind**: global class  
@@ -39,7 +37,6 @@ Represents a gRPC service
     * [.start(port, creds, options)](#Mali+start) ⇒ <code>Object</code>
     * [.close()](#Mali+close)
     * [.toJSON()](#Mali+toJSON) ⇒ <code>Object</code>
-    * [.inspect()](#Mali+inspect) ⇒ <code>Object</code>
 
 <a name="new_Mali_new"></a>
 
@@ -105,7 +102,7 @@ Whether to log errors in <code>onerror</code>. Default: <code>false</code>
 ### mali.addService(proto, name, options)
 Add the service and initialize the app with the proto.
 Basically this can be used if you don't have the data at app construction time for some reason.
-This is different with `grpc.Server.addService()`.
+This is different than `grpc.Server.addService()`.
 
 **Kind**: instance method of [<code>Mali</code>](#Mali)  
 
@@ -232,12 +229,6 @@ We only bother showing settings.
 
 **Kind**: instance method of [<code>Mali</code>](#Mali)  
 **Api**: public  
-<a name="Mali+inspect"></a>
-
-### mali.inspect() ⇒ <code>Object</code>
-Inspect implementation.
-
-**Kind**: instance method of [<code>Mali</code>](#Mali)  
 <a name="Context"></a>
 
 ## Context
@@ -343,7 +334,7 @@ console.dir(ctx.req) // { name: 'Bob' }
 <a name="Context+type"></a>
 
 ### context.type : <code>String</code>
-The call's type. One of `mali-call-types` enums.
+The call's type. One of `@malijs/call-types` enums.
 This is an alias to `ctx.request.type`.
 
 **Kind**: instance property of [<code>Context</code>](#Context)  
@@ -508,7 +499,7 @@ Creates a Mali Request instance
 | Param | Type | Description |
 | --- | --- | --- |
 | call | <code>Object</code> | the grpc call instance |
-| type | <code>String</code> | the call type. one of `mali-call-types` enums. |
+| type | <code>String</code> | the call type. one of `@malijs/call-types` enums. |
 
 <a name="Request+call"></a>
 
@@ -540,7 +531,7 @@ console.log(ctx.request.metadata)
 <a name="Request+type"></a>
 
 ### request.type : <code>String</code>
-The call's type. One of `mali-call-types` enums.
+The call's type. One of `@malijs/call-types` enums.
 
 **Kind**: instance property of [<code>Request</code>](#Request)  
 **Example**  
@@ -608,7 +599,7 @@ Creates a Mali Response instance
 | Param | Type | Description |
 | --- | --- | --- |
 | call | <code>Object</code> | the grpc call instance |
-| type | <code>String</code> | the call type. one of `mali-call-types` enums. |
+| type | <code>String</code> | the call type. one of `@malijs/call-types` enums. |
 
 <a name="Response+call"></a>
 
@@ -619,7 +610,7 @@ The internal gRPC call instance reference.
 <a name="Response+type"></a>
 
 ### response.type : <code>String</code>
-The call's type. One of `mali-call-types` enums.
+The call's type. One of `@malijs/call-types` enums.
 This will match Request's type.
 
 **Kind**: instance property of [<code>Response</code>](#Response)  
@@ -667,6 +658,14 @@ ctx.response.res = createResponseStream()
 **Example** *(DUPLEX calls)*  
 ```js
 ctx.response.res.write({ foo: 'bar' })
+```
+**Example** *(Custom Response Stream calls)*  
+```js
+ctx.response.res = new Response({ object: true});
+ctx.response.res.push({ data: 'hello 1' });
+ctx.response.res.push({ data: 'hello 2' });
+ctx.response.res.push({ data: 'hello 3' });
+ctx.response.res.push(null);
 ```
 <a name="Response+set"></a>
 
@@ -781,4 +780,3 @@ Gets the response status / trailer metadata as a `grpc.Metadata` object instance
 
 **Kind**: instance method of [<code>Response</code>](#Response)  
 **Returns**: <code>Object</code> - response status / trailer metadata  
- 
