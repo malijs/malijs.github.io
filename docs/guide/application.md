@@ -74,6 +74,12 @@ If `service` and `name` are given, it applies `fns` for that call under that ser
 app.use('Greeter', 'sayHello', handler)
 ```
 
+We can also use a full package name.
+
+```js
+app.use('helloworld.v1.Greeter', 'sayHello', handler)
+```
+
 If `service` name is provided and matches one of the services defined in proto, but no `name` is 
 provided it applies the `fns` as service level middleware for all handlers in that service.
 
@@ -82,8 +88,7 @@ app.use('Greeter', mwForGreeter)
 ```
 
 If `service` is provided and no `name` is provided, and `service` does not match any of the service 
-names in the proto, assumes `service` is actually rpc call name. Uses `0`th property in internal 
-services object. Useful for protos with only one service.
+names in the proto, assumes `service` is actually rpc call name, and we try to find the matching service with that method name.
 
 ```js
 app.use('sayHello', handler)
@@ -99,14 +104,11 @@ app.use({
     sayGoodbye: handler1, // has mw1, mw2
     sayHello: [ mw3, handler2 ] // has mw1, mw2, mw3
   },
-  Service2: {
+  'helloworld.Service2': {
     saySomething: handler3 // only has mw1
   }
 })
 ```
-
-If `object` provided but `0`th key does not match any of the services in proto, assumes `0`th service.
-Useful for protos with only one service.
 
 ```js
 app.use({
