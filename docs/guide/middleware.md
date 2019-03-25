@@ -21,6 +21,7 @@ async function logger (ctx, next) {
 }
 
 const app = new Mali(PROTO_PATH)
+app.use(logger)
 app.use({ sayHello })
 const server1 = app.start('127.0.0.1:50051')
 ```
