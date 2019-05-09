@@ -167,10 +167,10 @@ app.start(grpc.ServerCredentials.createInsecure())
 app.start('127.0.0.1:0')
 ```
 
-The application ports can be be retreived using the `ports()` function:
+The application ports can be be retreived using the `ports` property:
 
 ```js
-console.log(app.ports()) // [ 50051 ]
+console.log(app.ports) // [ 50051 ]
 ```
 
 ## Close
