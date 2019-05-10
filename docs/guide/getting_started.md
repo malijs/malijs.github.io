@@ -2,8 +2,10 @@
 
 ### Installation
 
-```sh
-$ npm install mali
+Install module and required peer dependencies.
+
+```
+$ npm install mali grpc @grpc/proto-loader
 ```
 
 ### Sample proto
@@ -41,7 +43,7 @@ path to the `proto` file and the name of the service within the definition.
 const path = require('path')
 const Mali = require('mali')
 
-const PROTO_PATH = path.resolve(__dirname, '../protos/helloworld.proto')
+const PROTO_PATH = path.resolve(__dirname, './helloworld.proto')
 const app = new Mali(PROTO_PATH, 'Greeter')
 ```
 
