@@ -6,7 +6,7 @@ There are a few preset application variables.
 
 * `app.name` the name of the service taken the proto definition
 * `app.env` the environment taken from `process.env.NODE_ENV` or set to default `development`
-* `app.silent` whether to log errors to `console.error` within the core error handler
+* `app.silent` Whether to supress error logging to `console.error` in the <code>onerror</code> handler. Default is `false`, that is errors will be logged to `stderr`.
 
 You can modify or add additional variables to have available globally. For example:
 
