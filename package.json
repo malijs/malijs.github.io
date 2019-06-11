@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/malijs/malijs.github.io#readme",
   "devDependencies": {
-    "vuepress": "^1.0.0-alpha.47"
+    "vuepress": "^1.0.0"
   }
 }
