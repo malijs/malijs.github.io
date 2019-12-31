@@ -116,6 +116,16 @@ console.log(ctx.metadata)
 // { 'user-agent': 'grpc-node/1.7.1 grpc-c/1.7.1 (osx; chttp2)' }
 ```
 
+### ctx.locals
+
+Request scoped variables that are reset on every invocation of the service method.
+
+```js
+console.log(ctx.locals) // {}
+ctx.locals.foo = 'bar'
+console.log(ctx.locals) // { foo: 'bar' }
+```
+
 ## Functions
 
 ### ctx.get()
