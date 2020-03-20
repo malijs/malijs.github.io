@@ -119,8 +119,7 @@ method of `ctx.res`.
 
 ```js
 app.use('processStuff', async function processStuff (ctx) {
-    ctx.req.on('data', d => ctx.res.write({ message: d.message.toUpperCase() }))
-    ctx.req.on('end', () => ctx.res.end())
-  }
+  ctx.req.on('data', d => ctx.res.write({ message: d.message.toUpperCase() }))
+  ctx.req.on('end', () => ctx.res.end())
 })
 ```
