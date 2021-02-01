@@ -31,7 +31,7 @@ where you can place additional contextual information for the client in the erro
 
 ```js
 const err = new Error('Not Authorized')
-err.code = 5000
+err.code = grpc.status.PERMISSION_DENIED
 err.metadata = new grpc.Metadata()
 err.metadata.add('type', 'AUTH')
 err.metadata.add('code', '5000')
