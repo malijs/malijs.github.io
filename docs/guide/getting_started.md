@@ -5,7 +5,7 @@
 Install module and required peer dependencies.
 
 ```
-$ npm install mali grpc @grpc/proto-loader
+$ npm install mali @grpc/grpc-js @grpc/proto-loader
 ```
 
 ### Sample proto
