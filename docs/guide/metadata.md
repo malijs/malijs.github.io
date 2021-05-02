@@ -4,7 +4,7 @@ title: Metadata
 
 # Metadata
 
-Information about a particular gRPC call is can be sent using [metadata](https://grpc.io/docs/guides/concepts.html#metadata) in the form of a list of key-value pairs, where the keys are strings and the values are typically strings (but can be binary data). Call calls received in serverces will have a metadata object that was sent by the client. When responding to a call invocation the server can send header metadata, as well additionally status metadata upon completion of the request. Mali adds facilities for working with metadata on top of the core gRPC module.
+Information about a particular gRPC call can be sent using [metadata](https://grpc.io/docs/guides/concepts.html#metadata) in the form of a list of key-value pairs, where the keys are strings and the values are typically strings (but can be binary data). Calls received on the server will have a metadata object that was sent by the client. When responding to a call invocation the server can send header metadata, as well additionally status metadata upon completion of the request. Mali adds facilities for working with metadata on top of the core gRPC module.
 
 ## Receiving
 
