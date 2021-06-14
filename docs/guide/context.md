@@ -89,7 +89,7 @@ The Mali Response object.
 ### ctx.req
 
 The request object. This is alias for `ctx.request.req`.
-In case of `UNIRY` and `RESPONSE_STREAM` calls it is simply the gRPC `call`'s `request`. 
+In case of `UNARY` and `RESPONSE_STREAM` calls it is simply the gRPC `call`'s `request`. 
 In case of `REQUEST_STREAM` and `DUPLEX` calls it's the gRPC `call` reference itself.
 
 ```js
@@ -100,7 +100,7 @@ console.log(ctx.req) // { name: 'Bob' }
 
 The response object. This is an alias to `ctx.response.res`.
 This is set only in case of `DUPLEX` calls, to the the gRPC `call` reference itself.
-In all other cases set the `res` property to the actual response message / object in case of `UNIRY` and `REQUEST_STREAM` calls, and to the output stream in case of `RESPONSE_STREAM` calls. 
+In all other cases set the `res` property to the actual response message / object in case of `UNARY` and `REQUEST_STREAM` calls, and to the output stream in case of `RESPONSE_STREAM` calls. 
 When a stream it is automatically [piped](https://nodejs.org/api/stream.html#stream_event_pipe) into the call.
 
 ```js
