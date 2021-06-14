@@ -54,7 +54,7 @@ and the name of the service constrcutor.
 
 ```js
 const services = require('./static/helloworld_grpc_pb')
-const app = new Mali(services, 'GreeterService')
+const app = new Mali(services, 'Greeter')
 ```
 
 ### Handling request
