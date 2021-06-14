@@ -55,7 +55,7 @@ console.log(ctx.response.status)  // { biz: 'baz' }
 
 The actual call response payload object.
 This is set only in case of `DUPLEX` calls, to the the gRPC `call` reference itself.
-In all other cases set the `res` property to the actual response message / object in case of `UNIRY` and `REQUEST_STREAM` calls, and to the output stream in case of `RESPONSE_STREAM` calls. 
+In all other cases set the `res` property to the actual response message / object in case of `UNARY` and `REQUEST_STREAM` calls, and to the output stream in case of `RESPONSE_STREAM` calls. 
 When a stream it is automatically [piped](https://nodejs.org/api/stream.html#stream_event_pipe) into the call.
 
 ```js

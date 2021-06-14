@@ -26,7 +26,7 @@ The internal gRPC call instance reference.
 ### request.req
 
 The actuall call request object.
-In case of `UNIRY` and `RESPONSE_STREAM` calls it is simply the gRPC `call`'s `request`. 
+In case of `UNARY` and `RESPONSE_STREAM` calls it is simply the gRPC `call`'s `request`. 
 In case of `REQUEST_STREAM` and `DUPLEX` calls it's the gRPC `call` reference itself.
 
 ```js
